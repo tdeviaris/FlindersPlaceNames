@@ -1,0 +1,75 @@
+# Translation utility with API keys - DO NOT COMMIT
+traducteur-app/
+traducteur/
+
+# Source RTF documents
+Source_documents/
+source_documents/
+
+# macOS
+.DS_Store
+Icon?
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*~
+tmp/
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Environment variables - DO NOT COMMIT (contains API keys)
+.env
+.env.local
+.env.*.local
+.vercel
+.env*.local
+
+# Local illustration workspace (do not commit)
+illustrations/
+
+# Claude Code internals
+.claude/
+
+# Assistant docs
+assistant/docs/
+
+# Playwright CLI
+.playwright-cli/
+
+# Captures et instantanes du navigateur d'automatisation
+.playwright-mcp/
+
+# Trait de cote Natural Earth, retelecharge a la demande par scripts/littoral.py
+data/ne_10m_coastline.geojson
+data/ne_10m_land.geojson
+
+# Documents de travail : jamais cites par une page, et servis publiquement
+# tant qu'ils sont versionnes. Le depot est publie tel quel par Vercel.
+*.docx
+
+# Rapports produits par les scripts, relisibles en les relancant
+output/
+
+# Base de connaissance du chatbot : sources rapatriees et corpus Markdown.
+# Le depot est publie tel quel par Vercel — versionner ces dossiers reviendrait
+# a mettre en telechargement libre la transcription inedite du journal de
+# Hamelin et 2 000 pages de PDF tiers. Les deux se refabriquent :
+#   ./rag/telecharger_sources.sh tout && python3 rag/convertir_sources.py
+#   python3 rag/extraire_site.py
+rag/sources/
+rag/corpus/
+rag/derniere_indexation.json
+
+rag/.magasin_precedent

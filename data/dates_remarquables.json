@@ -1,0 +1,227 @@
+[
+ {
+  "date": "1801-08-06",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Relâche à Madère : vivres embarqués, calfatage achevé",
+   "en": "Call at Madeira: provisions received, caulking completed"
+  }
+ },
+ {
+  "date": "1801-09-20",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Parages de l'île Trinidad, dans l'Atlantique sud",
+   "en": "Off Trinidad island, in the South Atlantic"
+  }
+ },
+ {
+  "date": "1801-10-14",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "En approche du cap de Bonne-Espérance",
+   "en": "Approaching the Cape of Good Hope"
+  }
+ },
+ {
+  "date": "1801-12-06",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Approche de la Nouvelle-Hollande, au sud-ouest du continent",
+   "en": "Landfall on New Holland, off the south-west cape"
+  }
+ },
+ {
+  "date": "1801-12-09",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Relâche au port du Roi-George, avant la côte sud",
+   "en": "Call at King George's Sound, before the south coast"
+  }
+ },
+ {
+  "date": "1802-01-28",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Baie Fowler : fin des côtes connues, la découverte commence",
+   "en": "Fowler's Bay: the known coast ends, discovery begins"
+  }
+ },
+ {
+  "date": "1802-02-20",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Remontée du grand enfoncement, futur golfe Spencer",
+   "en": "Working up the great bight, the future Spencer's Gulf"
+  }
+ },
+ {
+  "date": "1802-03-17",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Relevé de la côte orientale du golfe Spencer",
+   "en": "Surveying the eastern shore of Spencer's Gulf"
+  }
+ },
+ {
+  "date": "1802-04-09",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Séparation d'avec le Géographe, au lendemain de la rencontre",
+   "en": "Parting from the Géographe, the day after the meeting"
+  }
+ },
+ {
+  "date": "1802-05-09",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "L'Investigator mouille dans Sydney Cove",
+   "en": "The Investigator anchors in Sydney Cove"
+  }
+ },
+ {
+  "date": "1802-07-22",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Départ de Port Jackson, le Lady Nelson en conserve",
+   "en": "Departure from Port Jackson, the Lady Nelson in company"
+  }
+ },
+ {
+  "date": "1802-08-04",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Baie Bustard, sur la côte orientale",
+   "en": "Bustard Bay, on the east coast"
+  }
+ },
+ {
+  "date": "1802-10-21",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Les derniers récifs franchis, cap sur le détroit de Torrès",
+   "en": "The last reefs cleared, course set for Torres' Strait"
+  }
+ },
+ {
+  "date": "1802-11-06",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Golfe de Carpentarie : passage devant la rivière Batavia",
+   "en": "Gulf of Carpentaria: passing the Batavia River"
+  }
+ },
+ {
+  "date": "1802-12-11",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Relevé de la côte méridionale du golfe de Carpentarie",
+   "en": "Surveying the southern shore of the Gulf of Carpentaria"
+  }
+ },
+ {
+  "date": "1803-02-11",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Le cap Arnhem reçoit son nom",
+   "en": "Cape Arnhem is named"
+  }
+ },
+ {
+  "date": "1803-03-07",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Côte du Nord : route à l'ouest, vers les terres de McCluer",
+   "en": "North coast: steering west, towards McCluer's land"
+  }
+ },
+ {
+  "date": "1803-04-26",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Traversée de l'océan Indien, à la recherche d'une terre",
+   "en": "Crossing the Indian Ocean, in search of land"
+  }
+ },
+ {
+  "date": "1803-06-09",
+  "expedition": "F",
+  "navire": "l'Investigator",
+  "libelle": {
+   "fr": "Retour à Port Jackson : le tour du continent est achevé",
+   "en": "Return to Port Jackson: the circuit of the continent completed"
+  }
+ },
+ {
+  "date": "1803-08-10",
+  "expedition": "F",
+  "navire": "le Porpoise",
+  "libelle": {
+   "fr": "Le Porpoise quitte Port Jackson pour l'Angleterre",
+   "en": "The Porpoise leaves Port Jackson for England"
+  }
+ },
+ {
+  "date": "1803-08-17",
+  "expedition": "F",
+  "navire": "le Porpoise",
+  "libelle": {
+   "fr": "Naufrage du Porpoise sur le récif Wreck",
+   "en": "The Porpoise is wrecked on Wreck Reef"
+  }
+ },
+ {
+  "date": "1803-09-21",
+  "expedition": "F",
+  "navire": "le Cumberland",
+  "libelle": {
+   "fr": "Flinders repart de Port Jackson sur la goélette Cumberland",
+   "en": "Flinders sails from Port Jackson in the schooner Cumberland"
+  }
+ },
+ {
+  "date": "1803-10-11",
+  "expedition": "F",
+  "navire": "le Cumberland",
+  "libelle": {
+   "fr": "Départ du récif Wreck, cap sur le détroit de Torrès",
+   "en": "Leaving Wreck Reef, course set for Torres' Strait"
+  }
+ },
+ {
+  "date": "1803-11-25",
+  "expedition": "F",
+  "navire": "le Cumberland",
+  "libelle": {
+   "fr": "Au-delà de Java Head : la goélette fait eau",
+   "en": "Past Java Head: the schooner is leaking"
+  }
+ },
+ {
+  "date": "1803-12-17",
+  "expedition": "F",
+  "navire": "le Cumberland",
+  "libelle": {
+   "fr": "Port Louis, Île de France : le voyage s'achève, la captivité commence",
+   "en": "Port Louis, Île de France: the voyage ends and the detention begins"
+  }
+ }
+]

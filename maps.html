@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="maps-meta-title">Nautical charts - French Names Along the Australian Coastline</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+        :root { --nav-height: 72px; --accent: #0056b3; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; margin: 0; background-color: #999; color: #333; padding-top: var(--nav-height); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        .content-section { background-color: white; padding: clamp(28px, 4vw, 40px); margin-top: 16px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .content-section h1 { font-family: 'Lato', sans-serif; font-size: 2.2rem; font-weight: 700; border-bottom: 2px solid #0056b3; padding-bottom: 10px; margin: 0 0 10px 0;  text-align: center; }
+        .content-section h1 img { width: 24px; vertical-align: middle; margin-left: 8px; opacity: 0.8; }
+        .content-section h2.subtitle { font-family: 'Lato', sans-serif; font-weight: 400; font-size: clamp(1.05rem, 2vw, 1.2rem); margin: 0 0 16px 0; color: #444; }
+
+        .entry { margin-top: 30px; }
+        .entry-link { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; background-color: #0056b3; color: #fff; border-radius: 999px; border: none; text-decoration: none; font-weight: 600; transition: background-color 0.2s ease; cursor: pointer; font-size: 1rem; }
+        .entry-link:hover { background-color: #003f82; }
+        .entry-description { margin-top: 10px; line-height: 1.6; color: #555; }
+        @media (min-width: 769px) {
+            .map-block .entry-description {
+                text-align: justify;
+                text-justify: inter-word;
+                hyphens: auto;
+            }
+        }
+
+        .map-block { margin-top: 24px; }
+        .map-block:first-child { margin-top: 0; }
+        .map-block::after { content: ""; display: block; clear: both; }
+        .map-thumb {
+            margin-top: 12px;
+            float: left;
+            width: 250px; /* ~ 1/3 de l'ancienne taille (760px) */
+            margin-right: 18px;
+            margin-bottom: 12px;
+        }
+        .map-thumb button, .map-thumb a { border: none; padding: 0; background: transparent; cursor: zoom-in; display: block; width: 100%; }
+        .map-thumb button:focus-visible, .map-thumb a:focus-visible { outline: 3px solid #FFD700; outline-offset: 6px; border-radius: 12px; }
+        .map-thumb img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+
+        @media (max-width: 768px) {
+            .map-thumb {
+                float: none;
+                width: min(320px, 100%);
+                margin-right: 0;
+            }
+            .map-block .entry-description {
+                text-align: left;
+            }
+        }
+
+        /* Modale d'images */
+        .image-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 2000; }
+        .image-overlay.is-visible { display: flex; }
+        .image-overlay img { width: 90vw; height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 12px 48px rgba(0,0,0,0.6); }
+        .image-close { position: fixed; top: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(0,0,0,0.72); color: #fff; cursor: pointer; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index: 2100; }
+        .image-close:hover { background: rgba(0,0,0,0.85); }
+        .image-close:focus-visible { outline: 3px solid #FFD700; }
+
+        /* Mention de droits : une ligne sourde, sous la description. */
+        .entry-mention { margin-top: 8px; font-size: 0.85rem; color: #888; }
+
+        /* --- Le film des cartes anciennes --------------------------------
+           La miniature est la video elle-meme, qui montre son affiche tant
+           qu'on ne la lance pas. Elle prend donc les memes dimensions et le
+           meme habillage que les miniatures de cartes, a la pastille pres. */
+        .map-thumb--video button { position: relative; cursor: pointer; }
+        .map-thumb--video video { width: 100%; height: auto; display: block;
+                                  border-radius: 10px; background: #111;
+                                  box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+        /* Le poster de la video est la premiere image du film (Rosselli) :
+           c'est lui qu'on voit en plein ecran pendant le chargement, et le film
+           demarre sans saut. La miniature, elle, montre Mercator. */
+        /* L'affiche est une image a nous, posee sur la video. On ne se fie pas
+           au poster de l'element : une fois le film joue, le navigateur garde
+           la derniere image, et le recharger ne fait que montrer la premiere du
+           montage. Celle-ci, on la cache et on la remontre a volonte. */
+        .video-affiche { position: absolute; inset: 0; width: 100%; height: 100%;
+                         object-fit: cover; border-radius: 10px; display: block; }
+        .video-affiche[hidden] { display: none; }
+
+        .video-badge { position: absolute; inset: 0; display: flex;
+                       align-items: center; justify-content: center;
+                       pointer-events: none; }
+        .video-badge[hidden] { display: none; }
+        .video-badge svg { width: 54px; height: 38px;
+                           filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+        .video-badge-fond { fill: #1f1f1f; fill-opacity: 0.8; transition: fill 0.2s, fill-opacity 0.2s; }
+        .map-thumb--video button:hover .video-badge-fond { fill: #0056b3; fill-opacity: 0.95; }
+        .video-badge-fleche { fill: #fff; }
+
+        footer { background: #1f1f1f; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+
+        /* Language-specific content blocks */
+        [data-lang] { display: none; }
+        html[lang^="en"] [data-lang="en"],
+        html[lang^="fr"] [data-lang="fr"] { display: block; }
+    </style>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="index.html" id="nav-home" data-i18n="nav-home">Accueil</a></li>
+        <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+        <li><a href="map.html" id="nav-map" data-i18n="nav-map">Carte</a></li>
+        <li><a href="expert.html" id="nav-ai" data-i18n="nav-ai">Q&R IA</a></li>
+        <li><a href="resources.html" id="nav-resources" data-i18n="nav-resources">Ressources</a></li>
+        <li><a href="presentation.html" id="nav-about" data-i18n="nav-about">À propos</a></li>
+    </ul>
+    <div class="lang-switcher">
+        <button type="button" id="lang-fr" title="Passer en Français">
+            <img src="img/fr.svg" alt="Français">
+        </button>
+        <button type="button" id="lang-en" title="Switch to English">
+            <img src="img/au.svg" alt="English">
+        </button>
+    </div>
+</nav>
+
+    <main class="container">
+        <div data-lang="en">
+        <section class="content-section">
+            <h1>Nautical charts <a href="resources.html"><img src="img/up-arrow.svg" alt="Back to Resources page"></a></h1>
+
+
+
+            <div class="entry">
+                <!-- Le film des cartes anciennes, presente comme les cartes qui
+                     suivent : meme bouton, meme miniature de 250 px. La
+                     miniature est la video elle-meme, montrant son affiche ;
+                     rien ne se charge avant le clic. -->
+                <div class="map-block">
+                    <p><button class="entry-link" type="button" data-video="video-cartes-en">Australia takes shape on the charts</button></p>
+                    <div class="map-thumb map-thumb--video">
+                        <button type="button" data-video="video-cartes-en" aria-label="Play the film full screen">
+                            <video id="video-cartes-en" poster="img/video-cartes-australie-debut-en.jpg"
+                                   preload="none" playsinline
+                                   src="video/cartes-australie-1508-1814-en-1080p.mp4"></video>
+                            <img class="video-affiche" src="img/video-cartes-australie-poster.jpg"
+                                 alt="" aria-hidden="true" loading="lazy" decoding="async">
+                            <span class="video-badge" aria-hidden="true">
+                                <svg viewBox="0 0 68 48" focusable="false">
+                                    <path class="video-badge-fond" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/>
+                                    <path class="video-badge-fleche" d="M45 24 27 14v20z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="entry-description">Here are some of the earliest maps to show Terra Australis, from 1508 to 1814, in the order they were drawn. The continent appears in fragments, is distorted by the cartographers of Dieppe, corrected by successive Dutch landfalls, and at last closes upon itself under Freycinet and Flinders.</p>
+                    <p class="entry-mention">All these plates are in the public domain.</p>
+                </div>
+
+
+
+
+                <div class="map-block">
+                    <p><a class="entry-link" href="map-viewer.html?map=flinders">Explore Flinders's Chart</a></p>
+                    <div class="map-thumb">
+                        <a href="map-viewer.html?map=flinders" aria-label="Explore Flinders's chart in the viewer">
+                            <picture>
+                                <source srcset="img/carte-de-flinders-1814.avif" type="image/avif">
+                                <img src="img/carte-de-flinders-1814.jpg" alt="Flinders's chart (thumbnail)" loading="lazy" decoding="async">
+                            </picture>
+                        </a>
+                    </div>
+                    <p class="entry-description">Published in London on 1 January 1814 by G. &amp; W. Nicol, this plate opens the atlas to <em>A Voyage to Terra Australis</em>. It gathers the surveys Matthew Flinders carried out between 1798 and 1803, first along the coasts of New South Wales and Van Diemen's Land, then during the voyage of <em>H.M.S. Investigator</em>, which took him around almost the whole of the continent.</p>
+                    <p class="entry-description">Its title carries the trace of a disagreement. Flinders had put the name <em>Australia</em> to the Admiralty, which refused it, and the account appeared under that of <em>Terra Australis</em>. The chart keeps both, while the continent itself retains the names inherited from the Dutch navigators and from the British settlements—<em>New Holland</em> to the west, <em>New South Wales</em> to the east. It was nonetheless from this plate that the name Australia spread; the Admiralty adopted it only in 1824, ten years after its author's death.</p>
+                    <p class="entry-description">Flinders drew his fair charts during the six years of his detention on the Isle de France, and the plate bears no engraver's name beneath its frame. He died on 19 July 1814, the day after the work appeared, without having seen it published.</p>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <div data-lang="fr">
+        <section class="content-section">
+            <h1>Cartes marines <a href="resources.html"><img src="img/up-arrow.svg" alt="Retour à la page Ressources"></a></h1>
+
+
+
+            <div class="entry">
+                <!-- Le film des cartes anciennes, presente comme les cartes qui
+                     suivent : meme bouton, meme miniature de 250 px. La
+                     miniature est la video elle-meme, montrant son affiche ;
+                     rien ne se charge avant le clic. -->
+                <div class="map-block">
+                    <p><button class="entry-link" type="button" data-video="video-cartes-fr">Naissance de l’Australie sur les cartes</button></p>
+                    <div class="map-thumb map-thumb--video">
+                        <button type="button" data-video="video-cartes-fr" aria-label="Lire le film en plein écran">
+                            <video id="video-cartes-fr" poster="img/video-cartes-australie-debut-fr.jpg"
+                                   preload="none" playsinline
+                                   src="video/cartes-australie-1508-1814-fr-1080p.mp4"></video>
+                            <img class="video-affiche" src="img/video-cartes-australie-poster.jpg"
+                                 alt="" aria-hidden="true" loading="lazy" decoding="async">
+                            <span class="video-badge" aria-hidden="true">
+                                <svg viewBox="0 0 68 48" focusable="false">
+                                    <path class="video-badge-fond" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/>
+                                    <path class="video-badge-fleche" d="M45 24 27 14v20z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="entry-description">Voici les cartes parmi les plus anciennes, de 1508 à 1814, qui présentent Terra Australis, dans l’ordre où elles furent dressées. Le continent y apparaît par fragments, se déforme sous la plume des cartographes de Dieppe, se corrige au fil des reconnaissances hollandaises, puis se referme enfin sur lui-même chez Freycinet et Flinders.</p>
+                    <p class="entry-mention">Toutes ces planches sont dans le domaine public.</p>
+                </div>
+
+
+
+
+                <div class="map-block">
+                    <p><a class="entry-link" href="map-viewer.html?map=flinders">Explorer la carte de Flinders</a></p>
+                    <div class="map-thumb">
+                        <a href="map-viewer.html?map=flinders" aria-label="Explorer la carte de Flinders dans la visionneuse">
+                            <picture>
+                                <source srcset="img/carte-de-flinders-1814.avif" type="image/avif">
+                                <img src="img/carte-de-flinders-1814.jpg" alt="Carte de Flinders (miniature)" loading="lazy" decoding="async">
+                            </picture>
+                        </a>
+                    </div>
+                    <p class="entry-description">Publiée à Londres le 1<sup>er</sup> janvier 1814 par G. &amp; W. Nicol, cette planche ouvre l’atlas de <em>A Voyage to Terra Australis</em>. Elle réunit les levés que Matthew Flinders effectua entre 1798 et 1803, d’abord sur les côtes de la Nouvelle-Galles du Sud et de la Terre de Van Diemen, puis au cours de la campagne du <em>H.M.S. Investigator</em>, qui lui fit reconnaître le continent presque en entier.</p>
+                    <p class="entry-description">Son titre porte la trace d’un désaccord. Flinders avait proposé à l’Amirauté le nom d’<em>Australia</em>, qu’elle refusa, et la relation du voyage parut sous celui de <em>Terra Australis</em>. La carte retient les deux, tandis que le continent conserve les noms hérités des navigateurs hollandais et des établissements britanniques — <em>New Holland</em> à l’ouest, <em>New South Wales</em> à l’est. C’est pourtant de cette planche que le nom d’Australie se répandit ; l’Amirauté ne l’adopta qu’en 1824, dix ans après la mort de son auteur.</p>
+                    <p class="entry-description">Flinders mit ses cartes au net durant les six années de sa détention à l’île de France, et la planche ne porte aucun nom de graveur sous son cadre. Il mourut le 19 juillet 1814, au lendemain de la parution de l’ouvrage, sans l’avoir vu paraître.</p>
+                </div>
+            </div>
+        </section>
+        </div>
+    </main>
+
+    <div class="image-overlay" role="dialog" aria-modal="true" aria-label="Image Viewer">
+        <button type="button" class="image-close" aria-label="Close">&times;</button>
+        <img id="modal-image" src="" alt="">
+    </div>
+
+    <div data-include-footer></div>
+
+    <script src="js/translations.js?v=20241012"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/main.js?v=20260309"></script>
+    <script>
+        // Le clic lance la vidéo en plein écran. Si le navigateur refuse le
+        // plein écran — Safari sur iPhone ne l'accorde qu'à la vidéo elle-même,
+        // et certains le bloquent hors d'un geste — on joue en place plutôt que
+        // de ne rien faire.
+        (() => {
+            for (const bouton of document.querySelectorAll('[data-video]')) {
+                const video = document.getElementById(bouton.dataset.video);
+                if (!video) continue;
+
+                const cadre = bouton.closest('.map-thumb--video') || bouton.parentElement;
+                const affiche = cadre?.querySelector('.video-affiche');
+                const pastille = cadre?.querySelector('.video-badge');
+
+                bouton.addEventListener('click', async () => {
+                    if (affiche) affiche.hidden = true;
+                    if (pastille) pastille.hidden = true;
+                    video.controls = true;
+                    const pleinEcran = video.requestFullscreen
+                        || video.webkitRequestFullscreen
+                        || video.webkitEnterFullscreen;   // iPhone
+                    if (pleinEcran) {
+                        try {
+                            await pleinEcran.call(video);
+                        } catch {
+                            // refusé : on reste dans la page
+                        }
+                    }
+                    try {
+                        await video.play();
+                    } catch {
+                        // la lecture automatique a été refusée : les commandes
+                        // sont là, le lecteur cliquera.
+                    }
+                });
+
+                // Fin du film : on sort du plein ecran et la miniature retrouve
+                // son affiche.
+                //
+                // load() plutot que currentTime = 0 : une video qui a joue garde
+                // la derniere image affichee, et revenir au debut ne montrerait
+                // que la premiere image du montage. Seul un rechargement rend a
+                // l'element l'etat ou il affiche son poster.
+                video.addEventListener('ended', async () => {
+                    const sortir = document.exitFullscreen
+                        || document.webkitExitFullscreen
+                        || document.webkitCancelFullScreen;
+                    const enPleinEcran = document.fullscreenElement
+                        || document.webkitFullscreenElement;
+                    if (sortir && enPleinEcran) {
+                        try {
+                            await sortir.call(document);
+                        } catch {
+                            // deja sorti, ou refus du navigateur
+                        }
+                    }
+                    video.controls = false;
+                    video.pause();
+                    video.currentTime = 0;
+                    if (affiche) affiche.hidden = false;
+                    if (pastille) pastille.hidden = false;
+                });
+            }
+        })();
+    </script>
+
+    <script>
+        // Image modals
+        (() => {
+            const imageOverlay = document.querySelector('.image-overlay');
+            const modalImage = document.getElementById('modal-image');
+            const imageCloseBtn = document.querySelector('.image-close');
+            const imageButtons = document.querySelectorAll('[data-image]');
+            let lastFocusedElement = null;
+
+            const openImageOverlay = (imageSrc) => {
+                if (!imageOverlay || !modalImage) return;
+                modalImage.src = imageSrc;
+                imageOverlay.classList.add('is-visible');
+                lastFocusedElement = document.activeElement;
+                document.body.style.overflow = 'hidden';
+                document.addEventListener('keydown', handleImageKeydown);
+                imageCloseBtn?.focus();
+            };
+
+            const closeImageOverlay = () => {
+                if (!imageOverlay || !modalImage) return;
+                modalImage.src = '';
+                imageOverlay.classList.remove('is-visible');
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', handleImageKeydown);
+                if (lastFocusedElement) {
+                    lastFocusedElement.focus();
+                }
+            };
+
+            const handleImageKeydown = (event) => {
+                if (event.key === 'Escape') {
+                    closeImageOverlay();
+                }
+            };
+
+            imageButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const imageSrc = button.getAttribute('data-image');
+                    if (imageSrc) {
+                        openImageOverlay(imageSrc);
+                    }
+                });
+            });
+
+            imageCloseBtn?.addEventListener('click', closeImageOverlay);
+            imageOverlay?.addEventListener('click', (event) => {
+                if (event.target === imageOverlay) {
+                    closeImageOverlay();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

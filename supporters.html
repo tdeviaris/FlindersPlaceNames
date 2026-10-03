@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="supporters-meta-title">Project Supporters - French Names Along the Australian Coastline</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+        :root {
+            --nav-height: 72px;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: #999;
+            color: #333;
+            padding-top: var(--nav-height);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+
+        .content-section {
+            background-color: white;
+            padding: clamp(28px, 4vw, 40px);
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-height: 50vh;
+        }
+        .content-section h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #333;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin: 0 0 18px 0;
+            text-align: center;
+        }
+        .content-section h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0056b3;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+        .content-section p { line-height: 1.6; margin-bottom: 16px; }
+        .supporter-title-button,
+        .supporter-title-static {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            background-color: #0056b3;
+            color: #fff;
+            border-radius: 999px;
+            font-weight: 400;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .supporter-title-button {
+            border: none;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+        .supporter-title-button:hover { background-color: #003f82; }
+        .supporter-title-button:focus-visible { outline: 3px solid #FFD700; outline-offset: 3px; }
+
+        .supporter-block {
+            display: grid;
+            grid-template-columns: minmax(300px, 1.6fr) minmax(180px, 0.8fr);
+            gap: 16px;
+            align-items: start;
+            margin-top: 14px;
+        }
+        .supporter-block--text-only {
+            grid-template-columns: 1fr;
+        }
+        .supporter-photo { justify-self: end; }
+        .supporter-photo button {
+            border: none;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+        .supporter-photo button:focus-visible { outline: 3px solid #FFD700; outline-offset: 6px; border-radius: 12px; }
+        .supporter-photo img {
+            display: block;
+            width: 100%;
+            max-width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+            border: 6px solid #fff;
+            object-fit: cover;
+        }
+	        .supporter-text p { margin-top: 0; }
+	        .supporter-item { margin-top: 28px; }
+
+        /* Bellec modal */
+        .bellec-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; padding: 14px; z-index: 2000; }
+        .bellec-overlay.is-visible { display: flex; }
+        .bellec-container { position: relative; width: 96vw; height: 96vh; max-width: 1400px; }
+        .bellec-container iframe { width: 100%; height: 100%; border: none; border-radius: 10px; background: #fff; box-shadow: 0 12px 48px rgba(0,0,0,0.5); }
+        .bellec-close { position: fixed; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(255,255,255,0.95); color: #333; cursor: pointer; font-size: 1.7rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 2100; }
+        .bellec-close:hover { background: #f2f2f2; }
+        .bellec-close:focus-visible { outline: 3px solid #FFD700; }
+        footer { background: #1f1f1f; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+        @media (max-width: 768px) {
+            .content-section { padding: 24px; }
+            .content-section h2 { font-size: 1.5rem; }
+            .content-section h3 { font-size: 1.2rem; }
+            .content-section p { font-size: 0.9rem; }
+            .supporter-block {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .supporter-photo {
+                justify-self: center;
+                order: -1;
+            }
+            .supporter-photo img { max-width: 260px; }
+        }
+    </style>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="index.html" id="nav-home" data-i18n="nav-home">Accueil</a></li>
+        <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+        <li><a href="map.html" id="nav-map" data-i18n="nav-map">Carte</a></li>
+        <li><a href="expert.html" id="nav-ai" data-i18n="nav-ai">Q&R IA</a></li>
+        <li><a href="resources.html" id="nav-resources" data-i18n="nav-resources">Ressources</a></li>
+        <li><a href="presentation.html" id="nav-about" data-i18n="nav-about">À propos</a></li>
+    </ul>
+    <div class="lang-switcher">
+        <button type="button" id="lang-fr" title="Passer en Français">
+            <img src="img/fr.svg" alt="Français">
+        </button>
+        <button type="button" id="lang-en" title="Switch to English">
+            <img src="img/au.svg" alt="English">
+        </button>
+    </div>
+</nav>
+
+    <main class="container">
+        <section class="content-section">
+            <h2 data-i18n="about-supporters-page-title">Soutiens du projet</h2>
+            <p data-i18n-html="fl-supporters-placeholder">Cette page présentera les personnes et les organisations qui soutiennent le projet <em>Flinders Place Names</em>. <em>En préparation.</em></p>
+        </section>
+    </main>
+
+    <div data-include-footer></div>
+
+    <script src="js/translations.js?v=20241012"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/main.js?v=20260309"></script>
+    
+</body>
+</html>

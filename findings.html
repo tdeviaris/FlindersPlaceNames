@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="findings-meta-title">Findings - French Names Along the Australian Coastline</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+        :root {
+            --nav-height: 72px;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: #999;
+            color: #333;
+            padding-top: var(--nav-height);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+
+        .content-section {
+            background-color: white;
+            padding: clamp(28px, 4vw, 40px);
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-height: 50vh;
+        }
+        .content-section h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #333;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin: 0 0 18px 0;
+            text-align: center;
+        }
+        .content-section h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0056b3;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+        .content-section p {
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .resource-primary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            background-color: #0056b3;
+            color: #fff;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .resource-primary-link:hover { background-color: #003f82; }
+        .resource-primary-link:focus-visible { outline: 3px solid #FFD700; outline-offset: 3px; }
+        .findings-section { margin: 22px 0; }
+        [data-lang] { display: none; }
+        html[lang^="en"] [data-lang="en"],
+        html[lang^="fr"] [data-lang="fr"] { display: block; }
+        .share-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e3e7ed; }
+        .share-label { font-size: 0.9rem; color: #5a5a5a; font-weight: 600; margin-right: 4px; }
+        .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; background: #f0f4fb; border: 1px solid #d0daf0; color: #1f2a44; font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+        .share-btn:hover { background: #dce7f7; }
+        footer { background: #1f1f1f; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+        @media (max-width: 768px) {
+            .content-section { padding: 24px; }
+            .content-section h2 { font-size: 1.5rem; }
+            .content-section h3 { font-size: 1.2rem; }
+            .content-section p { font-size: 0.9rem; }
+        }
+    </style>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="index.html" id="nav-home">Accueil</a></li>
+        <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+        <li><a href="map.html" id="nav-map">Carte</a></li>
+        <li><a href="expert.html" id="nav-ai">Q&R IA</a></li>
+        <li><a href="resources.html" id="nav-resources">Ressources</a></li>
+        <li><a href="presentation.html" id="nav-about">À propos</a></li>
+    </ul>
+    <div class="lang-switcher">
+        <button type="button" id="lang-fr" title="Passer en Fran&ccedil;ais">
+            <img src="img/fr.svg" alt="Fran&ccedil;ais">
+        </button>
+        <button type="button" id="lang-en" title="Switch to English">
+            <img src="img/au.svg" alt="English">
+        </button>
+    </div>
+</nav>
+
+    <main class="container">
+        <section class="content-section">
+            <div data-lang="en">
+                <h2>Findings <a href="objet.html"><img src="img/up-arrow.svg" alt="Back to Aim page" style="width:24px; vertical-align:middle; margin-left:8px; opacity:0.8;"></a></h2>
+                <p>Six first findings from the place names given by Matthew Flinders between 1795 and 1803.</p>
+                <div class="findings-section">
+                    <h3>1. A seaman&rsquo;s nomenclature</h3>
+                    <p>Of the 350 names in the corpus, 110 describe the form of the land (Twin Peaks, Red Cliff Point, Smoky Bay) and 22 record the survey itself and its hazards: Lucky Bay, Anxious Bay, Avoid Bay, Denial Bay, Cape Catastrophe, Memory Cove. Nearly two names in five speak first of navigation.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>2. The Admiralty and its patrons</h3>
+                    <p>82 names honour people of rank: 54 officers of the Royal Navy, 19 members of the nobility, five directors of the East India Company and a handful of men of science. The map of the south coast reads in places like a list of the Board of Admiralty and of the voyage&rsquo;s protectors, Joseph Banks first among them.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>3. The ship&rsquo;s company</h3>
+                    <p>40 names commemorate the men of the <em>Investigator</em>: Point Brown, Cape Bauer, Mount Westall, the Franklin Islands. After the cutter was lost off Cape Catastrophe in February 1802, Flinders gave to nearby islands the names of master John Thistle, midshipman William Taylor and the six seamen drowned with them.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>4. Lincolnshire on the south coast</h3>
+                    <p>Thirty names recall British places, almost all of them in Flinders&rsquo;s native Lincolnshire: Port Lincoln, Boston Bay, Cape Donington &mdash; his birthplace &mdash;, Spilsby, Sibsey, Stickney and Reevesby islands around Spencer Gulf.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>5. Respect for predecessors</h3>
+                    <p>19 names keep or recall those of earlier navigators, Dutch above all: Cape Leeuwin, the Nuyts Archipelago, Mount Heemskirk and Mount Zeehan, Duyfken Point, Cape Arnhem, the Wessel Islands. Flinders also left Baudin&rsquo;s Rocks on the chart.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>6. A nomenclature that has held</h3>
+                    <p>339 of the 350 names are still in use in the form Flinders gave them. The few changes are telling: Great Island became Flinders Island, Barren Island became Hunter Island, Alowrie gave way to Illawarra.</p>
+                </div>
+                <p class="findings-note"><em>Provisional findings, drawn from the classification of the corpus; they will be developed as the work proceeds.</em></p>
+            </div>
+            <div data-lang="fr">
+                <h2>Enseignements <a href="objet.html"><img src="img/up-arrow.svg" alt="Retour à la page Objet" style="width:24px; vertical-align:middle; margin-left:8px; opacity:0.8;"></a></h2>
+                <p>Six premiers enseignements tirés des noms de lieux donnés par Matthew Flinders entre 1795 et 1803.</p>
+                <div class="findings-section">
+                    <h3>1. Une nomenclature de marin</h3>
+                    <p>Sur les 350 noms du corpus, 110 décrivent la forme du terrain (Twin Peaks, Red Cliff Point, Smoky Bay) et 22 gardent la mémoire du levé et de ses dangers : Lucky Bay, Anxious Bay, Avoid Bay, Denial Bay, Cape Catastrophe, Memory Cove. Près de deux noms sur cinq parlent d&rsquo;abord de navigation.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>2. L&rsquo;Amirauté et ses protecteurs</h3>
+                    <p>82 noms honorent des personnalités : 54 officiers de la Royal Navy, 19 membres de la noblesse, cinq directeurs de la Compagnie des Indes orientales et quelques savants. La carte de la côte sud se lit par endroits comme la liste du Conseil de l&rsquo;Amirauté et des protecteurs du voyage, Joseph Banks en tête.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>3. L&rsquo;équipage</h3>
+                    <p>40 noms commémorent les hommes de l&rsquo;<em>Investigator</em> : Point Brown, Cape Bauer, Mount Westall, les Franklin Islands. Après la perte du cotre au large du cap Catastrophe, en février 1802, Flinders donna aux îles voisines les noms du maître John Thistle, de l&rsquo;aspirant William Taylor et des six matelots noyés avec eux.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>4. Le Lincolnshire sur la côte sud</h3>
+                    <p>Trente noms rappellent des lieux britanniques, presque tous dans le Lincolnshire natal de Flinders : Port Lincoln, Boston Bay, Cape Donington &mdash; son village natal &mdash;, les îles Spilsby, Sibsey, Stickney ou Reevesby autour du golfe Spencer.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>5. Le respect des prédécesseurs</h3>
+                    <p>19 noms conservent ou rappellent ceux des navigateurs antérieurs, hollandais surtout : cap Leeuwin, archipel de Nuyts, monts Heemskirk et Zeehan, pointe Duyfken, cap Arnhem, îles Wessel. Flinders laissa aussi sur sa carte les Baudin&rsquo;s Rocks.</p>
+                </div>
+                <div class="findings-section">
+                    <h3>6. Une nomenclature qui a tenu</h3>
+                    <p>339 des 350 noms sont encore en usage sous la forme que Flinders leur donna. Les rares changements sont parlants : Great Island est devenue Flinders Island, Barren Island Hunter Island, et Alowrie a cédé la place à Illawarra.</p>
+                </div>
+                <p class="findings-note"><em>Enseignements provisoires, tirés du classement du corpus ; ils seront développés au fil du travail.</em></p>
+            </div>
+        </section>
+    </main>
+
+    <div data-include-footer></div>
+
+    <script src="js/translations.js?v=20260309"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/main.js?v=20260309"></script>
+</body>
+</html>

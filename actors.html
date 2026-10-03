@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="actors-meta-title">Key Actors - French Names Along the Australian Coastline</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+        :root { --nav-height: 72px; --accent: #0056b3; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; margin: 0; background-color: #999; color: #333; padding-top: var(--nav-height); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        .content-section { background-color: white; padding: clamp(28px, 4vw, 40px); margin-top: 16px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .content-section h1 { font-family: 'Lato', sans-serif; font-size: 2.2rem; font-weight: 700; border-bottom: 2px solid #0056b3; padding-bottom: 10px; margin: 0 0 18px 0; }
+        .content-section h2.subtitle { font-family: 'Lato', sans-serif; font-weight: 400; font-size: clamp(1.05rem, 2vw, 1.2rem); margin: 0 0 14px 0; color: #444; }
+        .content-section p.intro { margin: 0 0 18px 0; }
+        .toc { margin: 0 0 20px 0; padding-left: 18px; column-count: 2; column-gap: 32px; }
+        .toc li { margin: 6px 0; break-inside: avoid; }
+        .entry-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 2px solid var(--accent); padding-bottom: 6px; margin-top: 30px; scroll-margin-top: calc(var(--nav-height) + 16px); }
+        .entry-title a.backtop { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; }
+        .entry-title a.backtop img { width: 24px; height: 24px; opacity: 0.8; transition: opacity 0.2s ease; }
+        .entry-title a.backtop:hover img { opacity: 1; }
+        .entry { margin-bottom: 40px; }
+        .entry-content { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+        .entry-image { flex-shrink: 0; width: 300px; }
+        .entry-image img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .entry-text { flex: 1; min-width: 300px; }
+        .entry-text p { margin: 0.6em 0; line-height: 1.6; }
+        @media (min-width: 769px) {
+            .entry-content .entry-text {
+                text-align: justify;
+                text-justify: inter-word;
+                hyphens: auto;
+            }
+        }
+        .entry-image img { cursor: zoom-in; transition: opacity 0.2s ease; }
+        .entry-image img:hover { opacity: 0.85; }
+
+        /* Lightbox for fullscreen portrait display */
+        .portrait-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .portrait-lightbox.active {
+            display: flex;
+        }
+        .portrait-lightbox img {
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+        }
+        .portrait-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            font-size: 28px;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: background 0.2s ease;
+        }
+        .portrait-lightbox-close:hover {
+            background: #f2f2f2;
+        }
+        .portrait-lightbox-close:focus-visible {
+            outline: 3px solid #FFD700;
+        }
+
+        footer { background: #1f1f1f; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+        @media  (max-width: 768px)  {.entry-content { flex-direction: column; }
+            .entry-image { width: 100%; max-width: 450px; margin: 0 auto; }
+            .entry-text { text-align: left; }
+            .toc { column-count: 1; }
+        }
+
+    
+
+        /* Language-specific content blocks */
+        [data-lang] { display: none; }
+        html[lang^="en"] [data-lang="en"],
+        html[lang^="fr"] [data-lang="fr"] { display: block; }
+</style>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body id="top">
+    <nav>
+    <ul>
+        <li><a href="index.html" id="nav-home" data-i18n="nav-home">Accueil</a></li>
+        <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+        <li><a href="map.html" id="nav-map" data-i18n="nav-map">Carte</a></li>
+        <li><a href="expert.html" id="nav-ai" data-i18n="nav-ai">Q&R IA</a></li>
+        <li><a href="resources.html" id="nav-resources" data-i18n="nav-resources">Ressources</a></li>
+        <li><a href="presentation.html" id="nav-about" data-i18n="nav-about">À propos</a></li>
+    </ul>
+    <div class="lang-switcher">
+        <button type="button" id="lang-fr" title="Passer en Français">
+            <img src="img/fr.svg" alt="Français">
+        </button>
+        <button type="button" id="lang-en" title="Switch to English">
+            <img src="img/au.svg" alt="English">
+        </button>
+    </div>
+</nav>
+
+    <main class="container">
+        <div data-lang="en">
+        <section class="content-section">
+            <h1>Key Figures <a href="resources.html"><img src="img/up-arrow.svg" alt="Back to Resources page" style="width:24px; vertical-align:middle; margin-left:8px; opacity:0.8;"></a></h1>
+            <h2 class="subtitle">The men of Matthew Flinders's voyages</h2>
+            <p class="intro">
+                These entries present Matthew Flinders and those who made his voyages possible: the companion of his early surveys, the scientists and artists of the <em>Investigator</em>, their patron, and the guide who sailed with him along the coast.
+            </p>
+            <ul class="toc">
+                <li><a href="#banks-en">Joseph Banks</a></li>
+                <li><a href="#bass-en">George Bass</a></li>
+                <li><a href="#bauer-en">Ferdinand Bauer</a></li>
+                <li><a href="#brown-en">Robert Brown</a></li>
+                <li><a href="#bungaree-en">Bungaree</a></li>
+                <li><a href="#flinders-en">Matthew Flinders</a></li>
+                <li><a href="#westall-en">William Westall</a></li>
+            </ul>
+            <section class="entry">
+                <h2 id="banks-en" class="entry-title">
+                    <span>Joseph Banks</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Back to top"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-banks.jpg" alt="Portrait of Sir Joseph Banks by Thomas Phillips" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Joseph Banks (1743–1820) was the naturalist of James Cook's first voyage in the <em>Endeavour</em> (1768–1771), which brought him to Botany Bay in 1770. President of the Royal Society from 1778 until his death, he became the great patron of British science and one of the promoters of the colony of New South Wales.</p>
+                        <p>It was Banks who championed at the Admiralty Flinders's plan to complete the survey of the Australian coast. He chose the <em>Investigator</em>'s scientific staff — the botanist Robert Brown, the natural history painter Ferdinand Bauer, the landscape artist William Westall, the gardener Peter Good — and saw to their instruments and instructions.</p>
+                        <p>Flinders honoured him by naming the Sir Joseph Banks Group in Spencer Gulf. Banks was also a great Lincolnshire landowner: Reevesby Island recalls his estate at Revesby Abbey, not far from Flinders's native village.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="bass-en" class="entry-title">
+                    <span>George Bass</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Back to top"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-bass.jpg" alt="Portrait of George Bass" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Born in 1771 at Aswarby, Lincolnshire, George Bass was a naval surgeon. In 1795 he joined the <em>Reliance</em>, where he befriended the young Flinders. Together, in the tiny <em>Tom Thumb</em>, they explored Botany Bay, the Georges River and the coast south of Sydney.</p>
+                        <p>In December 1797 Bass followed the south-east coast in a whaleboat as far as Western Port, and suspected that a strait divided Van Diemen's Land from the mainland. The circumnavigation of the island, carried out with Flinders in the <em>Norfolk</em> in 1798–1799, proved it: Flinders proposed that the passage bear his friend's name, Bass Strait.</p>
+                        <p>Bass later left the navy for trade. In February 1803 he sailed from Sydney in the <em>Venus</em> for the Pacific and South America; neither he nor his ship was ever heard of again.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="bauer-en" class="entry-title">
+                    <span>Ferdinand Bauer</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Back to top"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/banksia-bauer.jpg" alt="Banksia coccinea, plate by Ferdinand Bauer" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Born in 1760 at Feldsberg (today Valtice, in the Czech Republic), Ferdinand Bauer was one of the finest natural history painters of his age. He had already illustrated John Sibthorp's <em>Flora Graeca</em> when Banks engaged him for the <em>Investigator</em>.</p>
+                        <p>During the voyage he made some two thousand drawings of plants and animals. To work quickly he recorded colours with a numbered code, which allowed him to finish the watercolours years later with remarkable accuracy. Remaining in Australia after the ship was condemned, he explored Norfolk Island, then returned to England with Robert Brown in 1805.</p>
+                        <p>His <em>Illustrationes Florae Novae Hollandiae</em> (1813), whose plates he engraved himself, were a masterpiece but a commercial failure. He died near Vienna in 1826. Flinders named Cape Bauer, in South Australia, after him. <em>As no authenticated portrait of Bauer is known, this entry is illustrated with one of his plates.</em></p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="brown-en" class="entry-title">
+                    <span>Robert Brown</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Back to top"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-brown.jpg" alt="Portrait of Robert Brown" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Born in 1773 at Montrose, Scotland, Robert Brown was an army surgeon and amateur botanist when Joseph Banks chose him as the <em>Investigator</em>'s naturalist. He went with Flinders aboard the <em>Géographe</em> at the meeting with Baudin in Encounter Bay.</p>
+                        <p>During the voyage and his extended stay in Australia, he gathered some 3,400 plant species, about 2,000 of them new to science. His <em>Prodromus Florae Novae Hollandiae</em> (1810) laid the foundations of Australian botany.</p>
+                        <p>Librarian to Banks, then keeper of botany at the British Museum, he observed in 1827 the random motion of suspended particles that has since borne his name — Brownian motion — and in 1831 named the cell nucleus. He died in London in 1858. Flinders named Mount Brown and Point Brown after him.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="bungaree-en" class="entry-title">
+                    <span>Bungaree</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Back to top"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-bungaree.jpg" alt="Bungaree, lithograph by Augustus Earle" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Bungaree (c. 1775–1830) was a Guringai man from the Broken Bay area, north of Sydney. In 1799 he sailed with Flinders in the <em>Norfolk</em> to Moreton Bay and Hervey Bay, acting as intermediary with the peoples they met.</p>
+                        <p>In 1802 he joined the <em>Investigator</em>, taking part in the run up the east coast, the survey of the Gulf of Carpentaria and the return by the west and south to Sydney. In his narrative Flinders praised his courage and tact in encounters with the Aboriginal people of the coast.</p>
+                        <p>He sailed again in 1817 with Phillip Parker King. A well-known figure in Sydney, painted by Augustus Earle, he died in 1830. His story is a reminder that voyages of discovery also relied on Indigenous knowledge and mediation.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="flinders-en" class="entry-title">
+                    <span>Matthew Flinders</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Back to top"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-flinders-chazal.jpg" alt="Portrait of Matthew Flinders by Toussaint Antoine de Chazal, Isle de France, c. 1806–1807" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Born on 16 March 1774 at Donington, Lincolnshire, the son of a surgeon, Matthew Flinders entered the Royal Navy in 1789. He learned navigation under William Bligh in the <em>Providence</em> (1791–1793) and fought at the Glorious First of June (1794).</p>
+                        <p>Reaching Port Jackson in 1795, he explored the coast of New South Wales with George Bass, then proved in 1798–1799 that Van Diemen's Land was an island. In command of the <em>Investigator</em>, he made in 1801–1803 the first circumnavigation of Australia and charted most of its coast, giving more than 260 names along the way.</p>
+                        <p>Wrecked on Wreck Reef, then held for six years on the Isle de France by Governor Decaen (1803–1810), he did not reach England until 1810. <em>A Voyage to Terra Australis</em> appeared on 18 July 1814; he died the following day. It was through this book that the name <em>Australia</em> took hold. His remains, found in 2019 beneath Euston station in London, have rested at Donington since 2024.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="westall-en" class="entry-title">
+                    <span>William Westall</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Back to top"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-westall.jpg" alt="Portrait of William Westall" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Born in 1781 at Hertford, the younger brother of the painter Richard Westall, William Westall was only nineteen when he joined the <em>Investigator</em> as landscape artist. His drawings of the Australian coast are among the first to render its light and vegetation.</p>
+                        <p>Wrecked with the <em>Porpoise</em> on Wreck Reef in 1803, he made his way to China and India before returning to England. Several of his views were engraved for the atlas of <em>A Voyage to Terra Australis</em> (1814), and the Admiralty commissioned from him a series of paintings drawn from the voyage.</p>
+                        <p>Elected an Associate of the Royal Academy in 1812, he pursued a career as landscape painter and engraver, and died in 1850. Flinders named Mount Westall, near Port Bowen, and Point Westall after him. The views on this site's home page are his.</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+        </div>
+
+        <div data-lang="fr">
+        <section class="content-section">
+            <h1>Les acteurs clés <a href="resources.html"><img src="img/up-arrow.svg" alt="Retour à la page Ressources" style="width:24px; vertical-align:middle; margin-left:8px; opacity:0.8;"></a></h1>
+            <h2 class="subtitle">Les hommes des voyages de Matthew Flinders</h2>
+            <p class="intro">
+                Ces fiches présentent Matthew Flinders et ceux qui ont rendu ses voyages possibles : son compagnon des premières reconnaissances, les savants et les artistes de l'<em>Investigator</em>, leur protecteur, et le guide qui l'accompagna le long des côtes.
+            </p>
+            <ul class="toc">
+                <li><a href="#banks-fr">Joseph Banks</a></li>
+                <li><a href="#bass-fr">George Bass</a></li>
+                <li><a href="#bauer-fr">Ferdinand Bauer</a></li>
+                <li><a href="#brown-fr">Robert Brown</a></li>
+                <li><a href="#bungaree-fr">Bungaree</a></li>
+                <li><a href="#flinders-fr">Matthew Flinders</a></li>
+                <li><a href="#westall-fr">William Westall</a></li>
+            </ul>
+            <section class="entry">
+                <h2 id="banks-fr" class="entry-title">
+                    <span>Joseph Banks</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Retour en haut"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-banks.jpg" alt="Portrait de Sir Joseph Banks par Thomas Phillips" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Joseph Banks (1743-1820) est le naturaliste du premier voyage de James Cook sur l'<em>Endeavour</em> (1768-1771), qui le conduit à Botany Bay en 1770. Président de la Royal Society de 1778 à sa mort, il devient le grand protecteur des sciences britanniques et l'un des promoteurs de la colonie de la Nouvelle-Galles du Sud.</p>
+                        <p>C'est lui qui soutient auprès de l'Amirauté le projet de Flinders d'achever la reconnaissance des côtes australiennes. Il choisit l'équipe scientifique de l'<em>Investigator</em> — le botaniste Robert Brown, le peintre Ferdinand Bauer, le paysagiste William Westall, le jardinier Peter Good — et veille à ses instruments et à ses instructions.</p>
+                        <p>Flinders lui rend hommage en nommant le Sir Joseph Banks Group, dans le golfe Spencer. Banks était aussi un grand propriétaire du Lincolnshire : l'île Reevesby rappelle son domaine de Revesby Abbey, voisin du village natal de Flinders.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="bass-fr" class="entry-title">
+                    <span>George Bass</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Retour en haut"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-bass.jpg" alt="Portrait de George Bass" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Né en 1771 à Aswarby, dans le Lincolnshire, George Bass est chirurgien de marine. Il embarque en 1795 sur le <em>Reliance</em>, où il se lie d'amitié avec le jeune Flinders. Ensemble, sur le minuscule <em>Tom Thumb</em>, ils explorent Botany Bay, la Georges River et la côte au sud de Sydney.</p>
+                        <p>En décembre 1797, Bass longe seul la côte sud-est en baleinière jusqu'à Western Port, et soupçonne qu'un détroit sépare la Terre de Van Diemen du continent. Le tour de l'île, accompli avec Flinders sur le <em>Norfolk</em> en 1798-1799, le confirme : Flinders propose de donner au passage le nom de son ami, Bass Strait.</p>
+                        <p>Bass quitte ensuite la marine pour le commerce. En février 1803, il part de Sydney sur le <em>Venus</em> vers le Pacifique et l'Amérique du Sud ; on n'eut jamais plus de nouvelles de lui ni de son navire.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="bauer-fr" class="entry-title">
+                    <span>Ferdinand Bauer</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Retour en haut"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/banksia-bauer.jpg" alt="Banksia coccinea, planche de Ferdinand Bauer" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Né en 1760 à Feldsberg (aujourd'hui Valtice, en République tchèque), Ferdinand Bauer est l'un des plus grands peintres d'histoire naturelle de son temps. Il a déjà illustré la <em>Flora Graeca</em> de John Sibthorp quand Banks le recrute pour l'<em>Investigator</em>.</p>
+                        <p>Au cours du voyage, il réalise près de deux mille dessins de plantes et d'animaux. Pour travailler vite, il note les couleurs par un code chiffré, qui lui permet d'achever les aquarelles des années plus tard avec une exactitude remarquable. Resté en Australie après la condamnation du navire, il explore l'île Norfolk, puis rentre en Angleterre avec Robert Brown en 1805.</p>
+                        <p>Ses <em>Illustrationes Florae Novae Hollandiae</em> (1813), dont il grave lui-même les planches, sont un chef-d'œuvre mais un échec commercial. Il meurt près de Vienne en 1826. Flinders a donné son nom au cap Bauer, en Australie-Méridionale. <em>Aucun portrait authentifié de Bauer n'étant connu, la fiche est illustrée par l'une de ses planches.</em></p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="brown-fr" class="entry-title">
+                    <span>Robert Brown</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Retour en haut"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-brown.jpg" alt="Portrait de Robert Brown" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Né en 1773 à Montrose, en Écosse, Robert Brown est chirurgien militaire et botaniste amateur lorsque Joseph Banks le choisit comme naturaliste de l'<em>Investigator</em>. Il accompagne Flinders à bord du <em>Géographe</em> lors de la rencontre avec Baudin à Encounter Bay.</p>
+                        <p>Pendant le voyage puis lors de son séjour prolongé en Australie, il rassemble près de 3 400 espèces de plantes, dont environ 2 000 étaient inconnues de la science. Son <em>Prodromus Florae Novae Hollandiae</em> (1810) pose les bases de la botanique australienne.</p>
+                        <p>Bibliothécaire de Banks, puis conservateur de la botanique au British Museum, il observe en 1827 le mouvement désordonné des particules en suspension, qui porte depuis son nom — le mouvement brownien —, et nomme en 1831 le noyau cellulaire. Il meurt à Londres en 1858. Flinders a donné son nom au mont Brown et à la pointe Brown.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="bungaree-fr" class="entry-title">
+                    <span>Bungaree</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Retour en haut"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-bungaree.jpg" alt="Bungaree, lithographie d'Augustus Earle" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Bungaree (vers 1775-1830) est un homme Guringai de la région de Broken Bay, au nord de Sydney. En 1799, il accompagne Flinders sur le <em>Norfolk</em> jusqu'à Moreton Bay et Hervey Bay, où il sert d'intermédiaire avec les peuples rencontrés.</p>
+                        <p>En 1802, il embarque de nouveau sur l'<em>Investigator</em> et participe à la remontée de la côte est, au levé du golfe de Carpentarie et au retour par l'ouest et le sud jusqu'à Sydney. Flinders loue dans son récit son courage et son tact lors des rencontres avec les Aborigènes du littoral.</p>
+                        <p>Il navigue encore en 1817 avec Phillip Parker King. Figure bien connue de Sydney, portraituré par Augustus Earle, il meurt en 1830. Son parcours rappelle que les voyages de découverte reposèrent aussi sur des savoirs et des médiations autochtones.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="flinders-fr" class="entry-title">
+                    <span>Matthew Flinders</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Retour en haut"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-flinders-chazal.jpg" alt="Portrait de Matthew Flinders par Toussaint Antoine de Chazal, île de France, vers 1806-1807" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Né le 16 mars 1774 à Donington, dans le Lincolnshire, fils d'un chirurgien, Matthew Flinders entre dans la Royal Navy en 1789. Il apprend la navigation auprès de William Bligh sur le <em>Providence</em> (1791-1793) et combat au Glorieux Premier Juin (1794).</p>
+                        <p>Arrivé à Port Jackson en 1795, il explore avec George Bass la côte de la Nouvelle-Galles du Sud, puis prouve en 1798-1799 l'insularité de la Terre de Van Diemen. Commandant de l'<em>Investigator</em>, il réalise de 1801 à 1803 la première circumnavigation de l'Australie et en lève la plus grande partie des côtes, donnant au passage plus de 260 noms.</p>
+                        <p>Naufragé sur Wreck Reef, puis retenu six ans à l'île de France par le gouverneur Decaen (1803-1810), il ne rentre en Angleterre qu'en 1810. <em>A Voyage to Terra Australis</em> paraît le 18 juillet 1814 ; il meurt le lendemain. C'est par ce livre que le nom d'<em>Australia</em> s'impose. Ses restes, retrouvés en 2019 sous la gare d'Euston à Londres, reposent depuis 2024 à Donington.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="entry">
+                <h2 id="westall-fr" class="entry-title">
+                    <span>William Westall</span>
+                    <a class="backtop" href="#top"><img src="img/up-arrow.svg" alt="Retour en haut"></a>
+                </h2>
+                <div class="entry-content">
+                    <div class="entry-image">
+                        <img src="img/flinders/portrait-westall.jpg" alt="Portrait de William Westall" loading="lazy" decoding="async">
+                    </div>
+                    <div class="entry-text">
+                        <p>Né en 1781 à Hertford, frère cadet du peintre Richard Westall, William Westall n'a que dix-neuf ans lorsqu'il embarque comme paysagiste sur l'<em>Investigator</em>. Ses dessins des côtes australiennes sont parmi les premiers à en restituer la lumière et la végétation.</p>
+                        <p>Naufragé avec le <em>Porpoise</em> sur Wreck Reef en 1803, il gagne la Chine puis l'Inde avant de rentrer en Angleterre. Plusieurs de ses vues sont gravées pour l'atlas de <em>A Voyage to Terra Australis</em> (1814), et l'Amirauté lui commande une série de tableaux tirés du voyage.</p>
+                        <p>Élu associé de la Royal Academy en 1812, il poursuit une carrière de paysagiste et de graveur, et meurt en 1850. Flinders a donné son nom au mont Westall, près de Port Bowen, et à la pointe Westall. Les vues qui illustrent la page d'accueil de ce site sont de lui.</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <div class="site-footer__side site-footer__side--left">
+                <img class="site-footer__logo" src="img/wahf_logo_white-on-black.jpg" alt="WAHF logo">
+            </div>
+
+            <p class="site-footer__copy">&copy; 2025 - Dany Bréelle - "French Names Along the Australian Coastline" Project</p>
+
+            <div class="site-footer__side site-footer__side--right">
+                <img class="site-footer__logo" src="img/rgssa-logo.png" alt="RGSSA logo">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox for fullscreen portrait display -->
+    <div class="portrait-lightbox" id="portraitLightbox">
+        <button type="button" class="portrait-lightbox-close" aria-label="Close">&times;</button>
+        <img src="" alt="">
+    </div>
+
+    <script>
+        // Lightbox management for portraits
+        const lightbox = document.getElementById('portraitLightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxClose = lightbox.querySelector('.portrait-lightbox-close');
+        const portraitImages = document.querySelectorAll('.entry-image img');
+
+        // Open lightbox on image click
+        portraitImages.forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Close on background click
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+    <script src="js/translations.js"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

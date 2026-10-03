@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="index-meta-title">Les toponymes de Matthew Flinders | Flinders Place Names</title>
+    <meta name="description" content="Les noms de lieux donnés par Matthew Flinders le long des côtes australiennes, de Tom Thumb (1795) à l’Investigator (1801-1803). Carte interactive, assistant IA et ressources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flindersplacenames.au/">
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Flinders Place Names">
+    <meta property="og:title" content="Flinders Place Names">
+    <meta property="og:description" content="Les toponymes de Matthew Flinders le long des côtes australiennes (1795-1803). Carte interactive, assistant IA et ressources.">
+    <meta property="og:url" content="https://flindersplacenames.au/">
+    <meta property="og:image" content="https://flindersplacenames.au/img/flinders/carte-generale-1814.jpg">
+    <meta property="og:locale" content="fr_AU">
+    <meta property="og:locale:alternate" content="en_AU">
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flinders Place Names">
+    <meta name="twitter:description" content="Les toponymes de Matthew Flinders le long des côtes australiennes (1795-1803). Carte interactive, assistant IA et ressources.">
+    <meta name="twitter:image" content="https://flindersplacenames.au/img/flinders/carte-generale-1814.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+        :root { --nav-height: 72px; }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; font-family: 'Inter', 'Lato', sans-serif; color: #1f1f1f; background-color: #f5f5f5; }
+        body { padding-top: var(--nav-height); }
+
+        main.story {
+            position: relative;
+            z-index: 1;
+        }
+        .scene {
+            position: relative;
+            min-height: 150vh;
+            z-index: 1;
+        }
+        .scene-media {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            height: calc(100vh - var(--nav-height));
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: brightness(0.9);
+            z-index: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        .scene > .scene-media {
+            display: none;
+        }
+        .scene-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.45) 100%);
+        }
+        .scene-content {
+            max-width: min(700px, 90vw);
+            margin: 0 auto;
+            padding: clamp(48px, 8vw, 96px) clamp(20px, 6vw, 48px);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+        .scene article {
+            background: rgba(0, 0, 0, 0.85);
+            color: #f5f5f5;
+            backdrop-filter: blur(6px);
+            padding: clamp(24px, 5vw, 40px);
+            border-radius: 0;
+            box-shadow: 0 18px 30px rgba(0,0,0,0.16);
+            line-height: 1.65;
+            width: 100%;
+        }
+        .scene article h2,
+        .scene article h3 {
+            color: inherit; /* Inherit the new light color from the article */
+        }
+        .scene article .source {
+            color: #aaa; /* Lighter gray for source text */
+        }
+        .scene article a {
+            color: #89cff0; /* A light blue for links */
+        }
+        h1 { font-family: 'Inter', 'Lato', sans-serif; font-weight: 700; letter-spacing: -0.02em; font-size: clamp(2.4rem, 5vw, 3.4rem); margin: 0 0 8px; color: #fff; text-shadow: 0 6px 20px rgba(0,0,0,0.45); }
+        h2 { font-family: 'Inter', 'Lato', sans-serif; font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 600; margin: 0 0 12px; color: #003b78; text-shadow: none; letter-spacing: normal; }
+        h2.illustration-title { font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 500; }
+        h3 { font-family: 'Inter', sans-serif; font-size: clamp(0.9rem, 1.8vw, 1.05rem); font-weight: 400; color: #555; margin: 0 0 16px; line-height: 1.4; }
+        h3[style*="italic"] { font-size: clamp(0.95rem, 1.9vw, 1.1rem); font-weight: 500; color: #ddd; margin-top: 24px; margin-bottom: 12px; }
+        .scene article p { margin: 0 0 1.1em; font-size: clamp(0.96rem, 2.4vw, 1.05rem); }
+        .scene article p:last-child { margin-bottom: 0; }
+        .scene article .source { font-size: 0.9rem; color: #555; }
+
+        .media-hero { background-image: url('img/flinders/carte-generale-1814.jpg'); }
+        .media-port-jackson,
+        .media-pellew,
+        .media-wreck-reef,
+        .media-malay-road,
+        .media-flinders {
+            background-color: #2a2a2a;
+            background-size: contain;
+            background-position: center center;
+        }
+        .media-port-jackson { background-image: url('img/flinders/vue-port-jackson.jpg'); }
+        .media-pellew { background-image: url('img/flinders/vue-pellew.jpg'); }
+        .media-wreck-reef { background-image: url('img/flinders/vue-wreck-reef.jpg'); }
+        .media-malay-road { background-image: url('img/flinders/vue-malay-road.jpg'); }
+        .media-flinders { background-image: url('img/flinders/portrait-flinders-chazal.jpg'); }
+        .scene--hero .scene-content {
+            max-width: min(900px, 94vw);
+        }
+
+        .intro-card {
+            background: rgba(0,0,0,0.7);
+            color: #f9f9f9;
+            padding: clamp(32px, 5vw, 48px) clamp(40px, 8vw, 80px);
+            box-shadow: 0 20px 46px rgba(0,0,0,0.5);
+            width: 100%;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 3.6s ease-out;
+            will-change: transform;
+        }
+        .intro-card.is-raised {
+            transform: translateY(var(--intro-card-raise, 0px));
+        }
+        .intro-card h1 { margin-bottom: 12px; color: #fff; }
+        .intro-card p { font-size: clamp(1.05rem, 2.4vw, 1.3rem); margin: 0; color: #f9f9f9; }
+        .intro-dev-status {
+            margin-top: 8px !important;
+            font-size: clamp(0.9rem, 2vw, 1.05rem) !important;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        .intro-audio { margin-top: 16px; }
+        .intro-audio-intro {
+            margin: 0 0 10px !important;
+            font-size: clamp(0.82rem, 1.8vw, 0.95rem) !important;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        .intro-audio audio {
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            display: block;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border-radius: 40px;
+            border: 1px solid transparent;
+            box-shadow: none;
+            accent-color: #ffffff;
+            color-scheme: dark;
+        }
+
+        @media (max-width: 768px) {
+            .scene article { padding: 24px 22px; }
+            .intro-card { padding: 28px 22px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .intro-card { transition: none; }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 20;
+        }
+        .scroll-indicator-text {
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            letter-spacing: 0.5px;
+        }
+        .scroll-indicator-arrow {
+            width: 24px;
+            height: 24px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: rotate(-45deg);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-out;
+        }
+        @media (max-width: 768px) {
+            .scroll-indicator {
+                bottom: 30px;
+            }
+            .scroll-indicator-text {
+                font-size: 0.85rem;
+            }
+            .scroll-indicator-arrow {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Video Introduction Overlay */
+        .video-intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 1.5s ease-out;
+        }
+        .video-intro-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .video-intro-overlay video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            cursor: pointer;
+        }
+        .video-skip-button {
+            position: absolute;
+            bottom: 10px;
+            right: 40px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        .video-skip-button:hover {
+            background: rgba(0, 0, 0, 0.95);
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+        @media (max-width: 768px) {
+            .video-skip-button {
+                bottom: 5px;
+                right: 20px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Dataset",
+          "name": "Flinders Place Names",
+          "description": "Les noms de lieux donnés par Matthew Flinders le long des côtes australiennes, de Tom Thumb (1795) à l'Investigator (1801-1803).",
+          "url": "https://flindersplacenames.au/map.html",
+          "inLanguage": ["fr", "en"],
+          "temporalCoverage": "1795/1803",
+          "spatialCoverage": "Australie",
+          "creator": { "@type": "Person", "name": "Dany Bréelle" }
+        },
+        {
+          "@type": "WebSite",
+          "name": "Flinders Place Names",
+          "url": "https://flindersplacenames.au/",
+          "inLanguage": ["fr", "en"]
+        }
+      ]
+    }
+    </script>
+<!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="index.html" id="nav-home" data-i18n="nav-home">Accueil</a></li>
+        <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+        <li><a href="map.html" id="nav-map" data-i18n="nav-map">Carte</a></li>
+        <li><a href="expert.html" id="nav-ai" data-i18n="nav-ai">Q&R IA</a></li>
+        <li><a href="resources.html" id="nav-resources" data-i18n="nav-resources">Ressources</a></li>
+        <li><a href="presentation.html" id="nav-about" data-i18n="nav-about">À propos</a></li>
+    </ul>
+    <div class="lang-switcher">
+        <button type="button" id="lang-fr" title="Passer en Français">
+            <img src="img/fr.svg" alt="Français">
+        </button>
+        <button type="button" id="lang-en" title="Switch to English">
+            <img src="img/au.svg" alt="English">
+        </button>
+    </div>
+</nav>
+
+    <main class="story">
+        <section class="scene scene--hero">
+            <div class="scene-media media-hero"></div>
+            <div class="scene-content" style="align-items: flex-end;">
+                <div class="intro-card">
+                    <h1 data-i18n="fl-hero-title">Flinders Place Names</h1>
+                    <p data-i18n="fl-hero-subtitle">The place names given by Matthew Flinders along the Australian coast (1795–1803)</p>
+                    <p id="hero-dev-status" class="intro-dev-status" data-i18n="hero-dev-status">Version under development</p>
+                </div>
+                <div class="scroll-indicator" id="scroll-indicator">
+                    <span class="scroll-indicator-text" data-i18n="scroll-indicator-text">Scroll down</span>
+                    <div class="scroll-indicator-arrow"></div>
+                </div>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-hero"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 data-i18n="fl-intro-title">Introduction</h2>
+                    <h3 data-i18n="fl-intro-subtitle">A navigator and his nomenclature</h3>
+                    <p data-i18n="fl-intro-p1"></p>
+                    <p data-i18n="fl-intro-p2"></p>
+                    <p data-i18n="fl-intro-p3"></p>
+                </article>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-flinders"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 data-i18n="fl-early-title">The apprenticeship years (1795–1799)</h2>
+                    <h3 data-i18n="fl-early-subtitle">Reliance, Tom Thumb, Francis and Norfolk</h3>
+                    <h3 data-i18n="fl-early-h-tom" style="margin-top: 20px; font-style: italic;">Tom Thumb, a boat eight feet long</h3>
+                    <p data-i18n="fl-early-p1"></p>
+                    <h3 data-i18n="fl-early-h-norfolk" style="margin-top: 20px; font-style: italic;">The strait and the island</h3>
+                    <p data-i18n="fl-early-p2"></p>
+                    <p data-i18n="fl-early-p3"></p>
+                </article>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-port-jackson"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 class="illustration-title" data-i18n="fl-pj-title">Port Jackson</h2>
+                    <p data-i18n="fl-pj-caption"></p>
+                    <p class="source" data-i18n="fl-pj-source"></p>
+                </article>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-hero"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 data-i18n="fl-inv-title">The voyage of the Investigator (1801–1803)</h2>
+                    <h3 data-i18n="fl-inv-subtitle">General Chart of Terra Australis or Australia, 1814</h3>
+                    <h3 data-i18n="fl-inv-h1" style="margin-top: 20px; font-style: italic;">Completing the discovery of a continent</h3>
+                    <p data-i18n="fl-inv-p1"></p>
+                    <p data-i18n="fl-inv-p2"></p>
+                    <h3 data-i18n="fl-inv-h2" style="margin-top: 20px; font-style: italic;">Encounter Bay</h3>
+                    <p data-i18n="fl-inv-p3"></p>
+                </article>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-pellew"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 class="illustration-title" data-i18n="fl-pellew-title">Sir Edward Pellew Group</h2>
+                    <p data-i18n="fl-pellew-caption"></p>
+                    <p class="source" data-i18n="fl-pellew-source"></p>
+                </article>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-wreck-reef"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 data-i18n="fl-wreck-title">Shipwreck, captivity and publication</h2>
+                    <h3 data-i18n="fl-wreck-h1" style="margin-top: 20px; font-style: italic;">Wreck Reef</h3>
+                    <p data-i18n="fl-wreck-p1"></p>
+                    <h3 data-i18n="fl-wreck-h2" style="margin-top: 20px; font-style: italic;">Six years on the Isle de France</h3>
+                    <p data-i18n="fl-wreck-p2"></p>
+                    <h3 data-i18n="fl-wreck-h3" style="margin-top: 20px; font-style: italic;">Terra Australis, or Australia</h3>
+                    <p data-i18n="fl-wreck-p3"></p>
+                </article>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-malay-road"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 class="illustration-title" data-i18n="fl-malay-title">Malay Road</h2>
+                    <p data-i18n="fl-malay-caption"></p>
+                    <p class="source" data-i18n="fl-malay-source"></p>
+                </article>
+            </div>
+        </section>
+        <section class="scene">
+            <div class="scene-media media-hero"></div>
+            <div class="scene-content">
+                <article>
+                    <h2 data-i18n="fl-why-title">Why Flinders’s place names matter</h2>
+                    <p data-i18n="fl-why-p1"></p>
+                    <p data-i18n="fl-why-p2"></p>
+                    <p data-i18n="fl-why-p3"></p>
+                    <p data-i18n="fl-why-p4"></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/translations.js?v=20261003"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/main.js?v=20260309"></script>
+    <script>
+        // Gestion du changement d'image de fond lors du scroll avec fondu enchaîné
+        const scenes = document.querySelectorAll('.scene');
+
+        // Créer deux couches pour le fondu enchaîné des images de fond
+        const backgroundLayer1 = document.createElement('div');
+        backgroundLayer1.className = 'scene-media media-hero'; // Set initial background
+        backgroundLayer1.style.position = 'fixed';
+        backgroundLayer1.style.zIndex = '0';
+        backgroundLayer1.style.opacity = '1';
+        document.body.insertBefore(backgroundLayer1, document.querySelector('main'));
+
+        const backgroundLayer2 = document.createElement('div');
+        backgroundLayer2.className = 'scene-media';
+        backgroundLayer2.style.position = 'fixed';
+        backgroundLayer2.style.zIndex = '0';
+        backgroundLayer2.style.opacity = '0';
+        document.body.insertBefore(backgroundLayer2, document.querySelector('main'));
+
+        let currentSceneIndex = -1;
+        let activeLayer = backgroundLayer1; // La couche actuellement visible
+        let hiddenLayer = backgroundLayer2; // La couche cachée pour préparer la prochaine image
+        let isTransitioning = false;
+
+        function updateBackground() {
+            if (isTransitioning) return; // Prevent new transitions while one is running
+
+            const scrollTop = window.scrollY;
+            let newSceneIndex = -1;
+
+            // Déterminer quelle scène est actuellement visible
+            scenes.forEach((scene, index) => {
+                const rect = scene.getBoundingClientRect();
+                const sceneTop = scene.offsetTop;
+                const sceneBottom = sceneTop + scene.offsetHeight;
+
+                if (scrollTop >= sceneTop - 100 && scrollTop < sceneBottom) {
+                    newSceneIndex = index;
+                }
+            });
+
+            // Handle case when scrolling above the first scene
+            if (newSceneIndex === -1 && scenes.length > 0 && scrollTop < scenes[0].offsetTop) {
+                newSceneIndex = 0;
+            }
+
+            // Si la scène a changé, faire un fondu enchaîné
+            if (newSceneIndex !== currentSceneIndex && newSceneIndex >= 0) {
+                isTransitioning = true; // Lock to prevent overlapping transitions
+                currentSceneIndex = newSceneIndex;
+                const currentScene = scenes[newSceneIndex];
+                const mediaElement = currentScene.querySelector('.scene-media');
+
+                if (mediaElement) {
+                    // Préparer la nouvelle image sur la couche cachée
+                    hiddenLayer.className = 'scene-media';
+                    Array.from(mediaElement.classList).forEach(cls => {
+                        if (cls.startsWith('media-')) {
+                            hiddenLayer.classList.add(cls);
+                        }
+                    });
+
+                    // Faire apparaître la nouvelle image en fondu
+                    hiddenLayer.style.opacity = '1';
+
+                    // Après la transition, cacher l'ancienne image et échanger les rôles
+                    setTimeout(() => {
+                        activeLayer.style.opacity = '0';
+
+                        // Échanger les rôles des deux couches
+                        const temp = activeLayer;
+                        activeLayer = hiddenLayer;
+                        hiddenLayer = temp;
+                        isTransitioning = false; // Unlock after transition is complete
+                    }, 650); // Légèrement après la fin de la transition CSS
+                } else {
+                    isTransitioning = false; // Unlock if no media found
+                }
+            }
+        }
+
+        // Initialiser dès que possible
+        updateBackground();
+        window.addEventListener('load', updateBackground);
+        window.addEventListener('scroll', updateBackground, { passive: true });
+        window.addEventListener('resize', updateBackground);
+
+        // Scroll indicator logic
+        const scrollIndicator = document.getElementById('scroll-indicator');
+        if (scrollIndicator) {
+            // Hide indicator on scroll
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    scrollIndicator.classList.add('hidden');
+                } else {
+                    scrollIndicator.classList.remove('hidden');
+                }
+            }, { passive: true });
+
+            // Scroll to next section on click
+            scrollIndicator.addEventListener('click', () => {
+                const firstScene = document.querySelectorAll('.scene')[1]; // Get second scene (after hero)
+                if (firstScene) {
+                    firstScene.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="ships-meta-title">Ships - French Names Along the Australian Coastline</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+        :root { --nav-height: 72px; }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: #999;
+            color: #333;
+            padding-top: var(--nav-height);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+        .content-section { background-color: white; padding: clamp(28px, 4vw, 40px); margin-top: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-height: 50vh;}
+        h1 {
+            margin: 0 0 18px 0;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        .subtitle { margin: 0 0 18px 0; font-weight: 600; color: #333; }
+        .intro { margin: 0 0 22px 0; line-height: 1.55; color: #333; }
+
+        .ship-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+        .ship-open {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 14px;
+            background-color: #0056b3;
+            color: #fff;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.2s ease;
+        }
+        .ship-open:hover { background-color: #003f82; }
+        .ship-open:focus-visible { outline: 3px solid #FFD700; outline-offset: 3px; }
+
+        .ship-duo {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+        .ship-rubric {
+            border: 1px solid #e6e6e6;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+        }
+        .ship-rubric-header {
+            padding: 16px 16px 0 16px;
+        }
+        .ship-rubric-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            background-color: #0056b3;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 999px;
+            transition: background-color 0.2s ease;
+        }
+        .ship-rubric-link:hover { background-color: #003f82; }
+        .ship-rubric-link:focus-visible { outline: 3px solid #FFD700; outline-offset: 3px; }
+        .ship-rubric-body {
+            padding: 14px 16px 16px 16px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        .ship-thumb-link { display: block; text-decoration: none; }
+        .ship-thumb-link:focus-visible { outline: 3px solid #FFD700; outline-offset: 6px; border-radius: 12px; }
+        .ship-rubric-thumb {
+            width: 250px;
+            height: 250px;
+            flex: 0 0 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+            display: block;
+        }
+        .ship-rubric-desc {
+            margin: 0;
+            line-height: 1.55;
+            color: #333;
+        }
+        @media (min-width: 769px) {
+            .ship-rubric-body .ship-rubric-desc {
+                text-align: justify;
+                text-justify: inter-word;
+                hyphens: auto;
+            }
+        }
+
+        .ship-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.6);
+            padding: 16px;
+            z-index: 9999;
+        }
+        .ship-modal.open { display: flex; }
+        .ship-modal-dialog {
+            width: min(980px, 100%);
+            height: min(82vh, 760px);
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .ship-modal-dialog.ship-modal-dialog--large {
+            width: min(1200px, 100%);
+            height: min(90vh, 900px);
+        }
+        .ship-modal-header {
+            display: grid;
+            grid-template-columns: 44px 1fr 44px;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px;
+            background: #1f1f1f;
+            color: #fff;
+        }
+        .ship-modal-title {
+            grid-column: 2;
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .ship-modal-close {
+            grid-column: 3;
+            justify-self: end;
+            width: 44px;
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: #fff;
+            font-size: 28px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 10px;
+        }
+        .ship-modal-close:hover { background: rgba(255,255,255,0.12); }
+        .ship-modal-close:focus-visible { outline: 3px solid #FFD700; outline-offset: 2px; }
+        .ship-modal-body { flex: 1; background: #fff; }
+        .ship-modal-frame { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
+
+        @media (max-width: 900px) {
+            .ship-duo { grid-template-columns: 1fr; }
+            .ship-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .ship-rubric-body { flex-direction: column; }
+            .ship-rubric-thumb { width: min(320px, 100%); height: auto; aspect-ratio: 1 / 1; }
+            .ship-rubric-body .ship-rubric-desc { text-align: left; }
+        }
+
+        [data-lang] { display: none; }
+        html[lang^="en"] [data-lang="en"],
+        html[lang^="fr"] [data-lang="fr"] { display: block; }
+    
+        /* Fiches navires du site Flinders : vignette a gauche, texte a droite. */
+        .fl-navire { display: flex; gap: 22px; align-items: flex-start; padding: 18px 0; border-top: 1px solid #e5edf6; }
+        .fl-navire:first-of-type { border-top: none; }
+        .fl-navire-media { flex: 0 0 240px; margin: 0; }
+        .fl-navire-media img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.15); display: block; }
+        .fl-navire-media figcaption { font-size: 0.8rem; color: #666; margin-top: 6px; line-height: 1.35; }
+        .fl-navire-media--vide { height: 150px; border-radius: 8px; background: linear-gradient(135deg, #eef3f9, #dbe6f3); display: flex; align-items: center; justify-content: center; color: #7a93b3; font-size: 3rem; }
+        .fl-navire-body { flex: 1; min-width: 0; }
+        .fl-navire-body h2 { margin: 0 0 2px; font-size: 1.35rem; color: #003b78; }
+        .fl-navire-type { margin: 0 0 10px; color: #555; font-style: italic; }
+        .fl-navire-body p { line-height: 1.6; }
+        @media (max-width: 768px) {
+            .fl-navire { flex-direction: column; }
+            .fl-navire-media { flex-basis: auto; width: min(320px, 100%); }
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html" id="nav-home" data-i18n="nav-home">Accueil</a></li>
+            <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+            <li><a href="map.html" id="nav-map" data-i18n="nav-map">Carte</a></li>
+            <li><a href="expert.html" id="nav-ai" data-i18n="nav-ai">Q&amp;R IA</a></li>
+            <li><a href="resources.html" id="nav-resources" data-i18n="nav-resources">Ressources</a></li>
+            <li><a href="presentation.html" id="nav-about" data-i18n="nav-about">À propos</a></li>
+        </ul>
+        <div class="lang-switcher">
+            <button type="button" id="lang-fr" title="Passer en Français">
+                <img src="img/fr.svg" alt="Français">
+            </button>
+            <button type="button" id="lang-en" title="Switch to English">
+                <img src="img/au.svg" alt="English">
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div data-lang="en">
+            <section class="content-section">
+                <h1>Ships <a href="resources.html"><img src="img/up-arrow.svg" alt="Back to Resources page" style="width:24px; vertical-align:middle; margin-left:8px; opacity:0.8;"></a></h1>
+                <h2 class="subtitle">Matthew Flinders's ships, 1795–1803</h2>
+                <article class="fl-navire" id="reliance-en">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Reliance</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1795-1800)</span></h2>
+                        <p class="fl-navire-type">Royal Navy ship, colonial transport</p>
+                        <p>The <em>Reliance</em> left England in February 1795 carrying the new governor of New South Wales, John Hunter, the surgeon George Bass and the midshipman Matthew Flinders. She reached Port Jackson in September 1795.</p>
+                        <p>The ship then served to supply the colony, notably from the Cape of Good Hope, whence she brought back livestock. On board her, in 1799, was born Trim, the cat who would follow Flinders on all his voyages. The <em>Reliance</em> carried Flinders back to England in 1800.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="tom-thumb-en">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Tom Thumb I and II</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1795-1796)</span></h2>
+                        <p class="fl-navire-type">Eight-foot boats</p>
+                        <p>The first <em>Tom Thumb</em> was a boat with a keel barely eight feet long that George Bass had brought from England. In October 1795 Bass, Flinders and a boy, William Martin, used her to explore Botany Bay and run up the Georges River.</p>
+                        <p>In March 1796, in a second boat scarcely larger, the same three followed the coast south of Sydney. Caught in a gale, they found shelter in a cove they named Providence Cove, today Wattamolla, and reached Lake Illawarra. Five names date from these surveys.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="francis-en">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Francis</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1798)</span></h2>
+                        <p class="fl-navire-type">Colonial schooner of Port Jackson</p>
+                        <p>A small schooner in the colony's service, assembled at Sydney from parts brought out from England, the <em>Francis</em> was sent in February 1798 to the Furneaux Islands, north-east of Van Diemen's Land, to rescue the castaways of the <em>Sydney Cove</em> and salvage her cargo.</p>
+                        <p>Flinders, aboard for the occasion, used the call to survey part of the group. Fourteen names in the Furneaux Islands come from this campaign. His observations of the tides strengthened the case for a strait south of the mainland.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="norfolk-en">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-norfolk.jpg" alt="Norfolk" loading="lazy" decoding="async">
+                        <figcaption>Replica of the <em>Norfolk</em></figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Norfolk</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1798-1799)</span></h2>
+                        <p class="fl-navire-type">25-ton sloop built on Norfolk Island</p>
+                        <p>Built in 1798 on Norfolk Island from the island's pine, this sloop of some 25 tons was entrusted to Flinders by Governor Hunter. From October 1798 to January 1799, with George Bass and eight volunteer seamen, Flinders sailed round Van Diemen's Land and established the existence of Bass Strait.</p>
+                        <p>In July and August 1799 the <em>Norfolk</em> ran north to Moreton Bay and Hervey Bay, with Bungaree aboard. Some seventy-five names, in Tasmania and on the Queensland coast, date from the <em>Norfolk</em>'s campaigns.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="investigator-en">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-investigator.jpg" alt="Investigator" loading="lazy" decoding="async">
+                        <figcaption>HM Sloop <em>Investigator</em>, etching by Geoffrey Ingleton, 1937</figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Investigator</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1801-1803)</span></h2>
+                        <p class="fl-navire-type">Former collier, 334-ton sloop of discovery</p>
+                        <p>Built at Sunderland in 1795 as the <em>Xenophon</em>, this collier was bought by the Royal Navy in 1798 and renamed <em>Investigator</em> in 1801 for Flinders's voyage. She sailed from Spithead on 18 July 1801 with some eighty men, among them the scientists and artists chosen by Joseph Banks.</p>
+                        <p>From December 1801 to June 1803 she sailed round Australia. But her hull, already worn when she left, rotted as the voyage went on: on her return to Port Jackson she was condemned as unseaworthy. Patched up, she returned to England in 1805 with Robert Brown and Ferdinand Bauer, and was broken up in 1810. Some 260 names date from her voyage.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="lady-nelson-en">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-lady-nelson.jpg" alt="Lady Nelson" loading="lazy" decoding="async">
+                        <figcaption>The brig <em>Lady Nelson</em>, woodcut</figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Lady Nelson</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1802)</span></h2>
+                        <p class="fl-navire-type">Survey brig with sliding keels</p>
+                        <p>A small brig of some sixty tons, fitted with sliding keels that let her work in shallow water, the <em>Lady Nelson</em> had already surveyed part of Bass Strait; her commander John Murray discovered Port Phillip in January 1802.</p>
+                        <p>In July 1802 she sailed north with the <em>Investigator</em>. But she sailed badly and lost one of her keels on the reefs: in October 1802 Flinders sent her back to Port Jackson.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="porpoise-en">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-porpoise-naufrage.jpg" alt="Porpoise" loading="lazy" decoding="async">
+                        <figcaption>The wreck of the <em>Porpoise</em>, after William Westall</figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Porpoise</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1803)</span></h2>
+                        <p class="fl-navire-type">Royal Navy ship</p>
+                        <p>A former Spanish prize, HMS <em>Porpoise</em> was sent to New South Wales in 1800. In August 1803 Flinders took passage in her for England, with part of the <em>Investigator</em>'s company, in company with the <em>Cato</em> and the <em>Bridgewater</em>.</p>
+                        <p>On the night of 17 August 1803 the <em>Porpoise</em> and the <em>Cato</em> struck a reef in the Coral Sea, which Flinders named Wreck Reef. The <em>Bridgewater</em> sailed on without giving help. The castaways settled on a sandbank while Flinders went for help in an open boat.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="cumberland-en">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Cumberland</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1803)</span></h2>
+                        <p class="fl-navire-type">29-ton schooner</p>
+                        <p>Built at Sydney in 1801 for the colony's service, the little schooner <em>Cumberland</em> was given to Flinders after the rescue of the Wreck Reef castaways. He left the reef on 11 October 1803 to sail home by Torres Strait and the Indian Ocean.</p>
+                        <p>The ship leaked; Flinders had to put in at the Isle de France (Mauritius), where he arrived on 17 December 1803. Governor Decaen seized the schooner and her papers, and held Flinders prisoner for six and a half years.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <div data-lang="fr">
+            <section class="content-section">
+                <h1>Les navires <a href="resources.html"><img src="img/up-arrow.svg" alt="Retour à la page Ressources" style="width:24px; vertical-align:middle; margin-left:8px; opacity:0.8;"></a></h1>
+                <h2 class="subtitle">Les navires de Matthew Flinders, de 1795 à 1803</h2>
+                <article class="fl-navire" id="reliance-fr">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Reliance</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1795-1800)</span></h2>
+                        <p class="fl-navire-type">Navire de la Royal Navy, transport de la colonie</p>
+                        <p>Le <em>Reliance</em> quitte l'Angleterre en février 1795 avec à son bord le nouveau gouverneur de la Nouvelle-Galles du Sud, John Hunter, le chirurgien George Bass et l'aspirant Matthew Flinders. Il arrive à Port Jackson en septembre 1795.</p>
+                        <p>Le navire sert ensuite au ravitaillement de la colonie, notamment au cap de Bonne-Espérance, d'où il rapporte du bétail. C'est à son bord qu'en 1799 naît Trim, le chat qui suivra Flinders dans tous ses voyages. Le <em>Reliance</em> ramène Flinders en Angleterre en 1800.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="tom-thumb-fr">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Tom Thumb I et II</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1795-1796)</span></h2>
+                        <p class="fl-navire-type">Canots de huit pieds</p>
+                        <p>Le premier <em>Tom Thumb</em> est un canot d'à peine huit pieds de quille (2,4 mètres) que George Bass a apporté d'Angleterre. En octobre 1795, Bass, Flinders et un jeune garçon, William Martin, s'en servent pour explorer Botany Bay et remonter la Georges River.</p>
+                        <p>En mars 1796, sur un second canot à peine plus grand, les trois mêmes longent la côte au sud de Sydney. Pris dans un coup de vent, ils trouvent refuge dans une crique qu'ils nomment Providence Cove, aujourd'hui Wattamolla, et atteignent le lac Illawarra. Cinq noms datent de ces reconnaissances.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="francis-fr">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Francis</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1798)</span></h2>
+                        <p class="fl-navire-type">Goélette de la colonie de Port Jackson</p>
+                        <p>Petite goélette au service de la colonie, assemblée à Sydney à partir d'éléments apportés d'Angleterre, le <em>Francis</em> est envoyé en février 1798 aux îles Furneaux, au nord-est de la Terre de Van Diemen, pour secourir les naufragés du <em>Sydney Cove</em> et récupérer sa cargaison.</p>
+                        <p>Flinders, embarqué pour l'occasion, profite de l'escale pour lever une partie de l'archipel. Quatorze noms des îles Furneaux viennent de cette campagne. Ses observations sur les courants renforcent l'hypothèse d'un détroit au sud du continent.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="norfolk-fr">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-norfolk.jpg" alt="Norfolk" loading="lazy" decoding="async">
+                        <figcaption>Réplique du <em>Norfolk</em></figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Norfolk</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1798-1799)</span></h2>
+                        <p class="fl-navire-type">Sloop de 25 tonneaux construit à l'île Norfolk</p>
+                        <p>Construit en 1798 à l'île Norfolk avec le pin de l'île, ce sloop d'environ 25 tonneaux est confié par le gouverneur Hunter à Flinders. D'octobre 1798 à janvier 1799, avec George Bass et huit matelots volontaires, Flinders fait le tour de la Terre de Van Diemen et établit l'existence du détroit de Bass.</p>
+                        <p>En juillet et août 1799, le <em>Norfolk</em> remonte la côte jusqu'à Moreton Bay et Hervey Bay, avec Bungaree à son bord. Près de soixante-quinze noms, en Tasmanie et sur la côte du Queensland, datent des campagnes du <em>Norfolk</em>.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="investigator-fr">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-investigator.jpg" alt="Investigator" loading="lazy" decoding="async">
+                        <figcaption>Le HM Sloop <em>Investigator</em>, eau-forte de Geoffrey Ingleton, 1937</figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Investigator</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1801-1803)</span></h2>
+                        <p class="fl-navire-type">Ancien charbonnier, sloop de découverte de 334 tonneaux</p>
+                        <p>Construit à Sunderland en 1795 sous le nom de <em>Xenophon</em>, ce charbonnier est acheté par la Royal Navy en 1798 et rebaptisé <em>Investigator</em> en 1801 pour le voyage de Flinders. Il appareille de Spithead le 18 juillet 1801 avec quelque quatre-vingts hommes, dont les savants et artistes choisis par Joseph Banks.</p>
+                        <p>De décembre 1801 à juin 1803, il fait le tour de l'Australie. Mais sa coque, déjà usée au départ, pourrit au fil du voyage : à son retour à Port Jackson, le navire est déclaré hors d'état de naviguer. Remis en état, il rentre en Angleterre en 1805 avec Robert Brown et Ferdinand Bauer, puis est démoli en 1810. Environ 260 noms datent de son voyage.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="lady-nelson-fr">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-lady-nelson.jpg" alt="Lady Nelson" loading="lazy" decoding="async">
+                        <figcaption>Le brick <em>Lady Nelson</em>, gravure sur bois</figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Lady Nelson</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1802)</span></h2>
+                        <p class="fl-navire-type">Brick de levé à quilles mobiles</p>
+                        <p>Petit brick d'une soixantaine de tonneaux, équipé de quilles mobiles qui lui permettent de naviguer en eaux peu profondes, le <em>Lady Nelson</em> a déjà levé une partie du détroit de Bass ; son commandant John Murray découvre Port Phillip en janvier 1802.</p>
+                        <p>En juillet 1802, il accompagne l'<em>Investigator</em> vers le nord. Mais il marche mal, et perd l'une de ses quilles sur les récifs : en octobre 1802, Flinders le renvoie à Port Jackson.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="porpoise-fr">
+                    <figure class="fl-navire-media">
+                        <img src="img/flinders/navire-porpoise-naufrage.jpg" alt="Porpoise" loading="lazy" decoding="async">
+                        <figcaption>Le naufrage du <em>Porpoise</em>, d'après William Westall</figcaption>
+                    </figure>
+                    <div class="fl-navire-body">
+                        <h2><em>Porpoise</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1803)</span></h2>
+                        <p class="fl-navire-type">Navire de la Royal Navy</p>
+                        <p>Ancienne prise espagnole, le HMS <em>Porpoise</em> est envoyé en Nouvelle-Galles du Sud en 1800. En août 1803, Flinders y prend passage pour rentrer en Angleterre, avec une partie de l'équipage de l'<em>Investigator</em>, en compagnie du <em>Cato</em> et du <em>Bridgewater</em>.</p>
+                        <p>Dans la nuit du 17 août 1803, le <em>Porpoise</em> et le <em>Cato</em> se brisent sur un récif de la mer de Corail, que Flinders nomme Wreck Reef. Le <em>Bridgewater</em> poursuit sa route sans porter secours. Les naufragés s'installent sur un banc de sable pendant que Flinders part chercher de l'aide en canot.</p>
+                    </div>
+                </article>
+                <article class="fl-navire" id="cumberland-fr">
+                    <div class="fl-navire-media fl-navire-media--vide" aria-hidden="true">&#9875;</div>
+                    <div class="fl-navire-body">
+                        <h2><em>Cumberland</em> <span style="font-weight:400;color:#666;font-size:1rem;">(1803)</span></h2>
+                        <p class="fl-navire-type">Goélette de 29 tonneaux</p>
+                        <p>Construite à Sydney en 1801 pour le service de la colonie, la petite goélette <em>Cumberland</em> est confiée à Flinders après le sauvetage des naufragés de Wreck Reef. Il quitte le récif le 11 octobre 1803 pour rentrer en Angleterre par le détroit de Torres et l'océan Indien.</p>
+                        <p>Le navire fait eau ; Flinders doit relâcher à l'île de France (Maurice), où il arrive le 17 décembre 1803. Le gouverneur Decaen confisque la goélette et ses papiers, et retient Flinders prisonnier pendant six ans et demi.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <div id="ship-modal" class="ship-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Ship details">
+        <div class="ship-modal-dialog" role="document">
+            <div class="ship-modal-header">
+                <h3 class="ship-modal-title" id="ship-modal-title"></h3>
+                <button type="button" class="ship-modal-close" id="ship-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="ship-modal-body">
+                <iframe class="ship-modal-frame" id="ship-modal-frame" title="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div data-include-footer></div>
+
+    <script src="js/translations.js?v=20241012"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/main.js?v=20260309"></script>
+    <script>
+        (function () {
+            const modal = document.getElementById('ship-modal');
+            const modalDialog = modal?.querySelector('.ship-modal-dialog');
+            const modalTitle = document.getElementById('ship-modal-title');
+            const modalFrame = document.getElementById('ship-modal-frame');
+            const modalClose = document.getElementById('ship-modal-close');
+
+            let lastFocusedElement = null;
+
+            const openShipModal = (src, title) => {
+                if (!modal || !modalFrame || !modalTitle) return;
+                lastFocusedElement = document.activeElement;
+                if (modalDialog) {
+                    const srcValue = src || '';
+                    const shouldUseLargeDialog = ['legeographe.html', 'larecherche.html', 'lesperance.html', 'lenaturaliste.html', 'casuarina.html'].some((page) => srcValue.includes(page));
+                    modalDialog.classList.toggle('ship-modal-dialog--large', shouldUseLargeDialog);
+                }
+                modalTitle.textContent = title || '';
+                modalFrame.title = title || 'Ship details';
+                modalFrame.src = encodeURI(src || '');
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                if (modalClose) {
+                    modalClose.focus({ preventScroll: true });
+                }
+            };
+
+            const closeShipModal = () => {
+                if (!modal || !modalFrame) return;
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                modalFrame.src = '';
+                modalFrame.title = '';
+                if (modalDialog) {
+                    modalDialog.classList.remove('ship-modal-dialog--large');
+                }
+                if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                    lastFocusedElement.focus({ preventScroll: true });
+                }
+                lastFocusedElement = null;
+            };
+
+            document.querySelectorAll('[data-ship-modal]').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    openShipModal(link.getAttribute('data-ship-modal'), link.getAttribute('data-ship-title') || link.textContent.trim());
+                });
+            });
+
+            if (modalClose) {
+                modalClose.addEventListener('click', closeShipModal);
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeShipModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && modal && modal.classList.contains('open')) {
+                    closeShipModal();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

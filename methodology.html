@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="methodology-meta-title">Objectives and Methodology - French Names Along the Australian Coastline</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+        :root { --nav-height: 72px; --accent: #0056b3; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; margin: 0; background-color: #999; color: #333; padding-top: var(--nav-height); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        .content-section { background-color: white; padding: clamp(28px, 4vw, 40px); margin-top: 16px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .content-section h1 { font-family: 'Lato', sans-serif; font-size: 2.2rem; font-weight: 700; border-bottom: 2px solid #0056b3; padding-bottom: 10px; margin: 0 0 18px 0;  text-align: center; }
+        .content-section h1 img { width: 24px; vertical-align: middle; margin-left: 8px; opacity: 0.8; }
+        .content-section h3 { font-family: 'Lato', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 28px 0 12px 0; }
+        .content-section h4 { font-family: 'Lato', sans-serif; font-size: 1.15rem; font-weight: 700; color: #333; margin: 18px 0 10px 0; }
+        .content-section p, .content-section ul { line-height: 1.7; color: #555; }
+        .content-section ul { margin: 10px 0 20px 0; padding-left: 30px; }
+        .content-section ul li { margin-bottom: 8px; }
+        .content-section a { color: var(--accent); text-decoration: none; }
+        .content-section a:hover { text-decoration: underline; }
+        .reader-note {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid #d7d7d7;
+        }
+        .reader-note h3 {
+            margin-top: 0;
+        }
+        .reader-note p {
+            margin: 0 0 14px 0;
+            text-align: justify;
+        }
+        .reader-note p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .om-intro {
+            background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+            border: 1px solid #d8e6f8;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin: 8px 0 24px 0;
+        }
+        .om-intro p {
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .om-intro p:last-child {
+            margin-bottom: 0;
+        }
+        .om-section-block {
+            margin: 20px 0;
+            padding: 18px 18px 14px 18px;
+            border-left: none;
+            background: #fbfbfb;
+            border-radius: 8px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+        }
+        .om-section-block h4 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+        .om-section-block p {
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .om-section-block p:last-child {
+            margin-bottom: 0;
+        }
+        .om-section-block--accent {
+            background: #f5f9ff;
+            border-left: 4px solid var(--accent);
+            box-shadow: inset 0 0 0 1px rgba(0, 86, 179, 0.08);
+        }
+        .om-method-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: -2px 0 10px 0;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #0056b3 0%, #2d75cc 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: 0 6px 16px rgba(0, 86, 179, 0.22);
+        }
+        .om-method-banner::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d8e9ff;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.35);
+        }
+        .om-section-block--accent h4 {
+            color: var(--accent);
+        }
+        .om-list {
+            margin: 8px 0 16px 0;
+            padding-left: 22px;
+        }
+        .om-list li {
+            margin-bottom: 8px;
+            color: #4d4d4d;
+        }
+
+        .om-illustration {
+            max-width: 48%;
+            margin-bottom: 12px;
+        }
+        .om-illustration--layered {
+            max-width: 43%;
+        }
+        .om-illustration img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            display: block;
+            cursor: zoom-in;
+        }
+
+        /* Lightbox */
+        .portrait-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .portrait-lightbox.active {
+            display: flex;
+        }
+        .portrait-lightbox img {
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+        }
+        .portrait-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            font-size: 28px;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: background 0.2s ease;
+        }
+        .portrait-lightbox-close:hover { background: #f2f2f2; }
+        .portrait-lightbox-close:focus-visible { outline: 3px solid #FFD700; }
+        .om-illustration figcaption {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 6px;
+            line-height: 1.4;
+            font-style: italic;
+        }
+        .om-illustration--left {
+            float: left;
+            margin-right: 22px;
+            margin-bottom: 12px;
+        }
+        .om-illustration--right {
+            float: right;
+            margin-left: 22px;
+            margin-bottom: 12px;
+        }
+        .om-illustration-pair {
+            float: right;
+            width: min(58%, 780px);
+            margin-left: 22px;
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+            gap: 12px;
+        }
+        .om-illustration-pair .om-illustration {
+            max-width: 100%;
+            margin: 0;
+            float: none;
+            min-width: 0;
+        }
+        .om-illustration-pair .om-illustration img {
+            height: 260px;
+            object-fit: contain;
+            background: #ece2c7;
+        }
+        .om-illustration-pair .om-illustration figcaption {
+            font-size: 0.82rem;
+            color: #6a6a6a;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .om-illustration-pair .om-illustration figcaption a {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .om-clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        @media (max-width: 600px) {
+            .om-illustration {
+                max-width: 100%;
+                float: none !important;
+                margin: 0 0 16px 0 !important;
+            }
+            .om-illustration-pair {
+                width: 100%;
+                float: none;
+                margin: 0 0 16px 0;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .om-illustration-pair .om-illustration img {
+                height: auto;
+            }
+        }
+
+        footer { background: #1f1f1f; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+
+        /* Language-specific content blocks */
+        [data-lang] { display: none; }
+        html[lang^="en"] [data-lang="en"],
+        html[lang^="fr"] [data-lang="fr"] { display: block; }
+    </style>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="index.html" id="nav-home" data-i18n="nav-home">Accueil</a></li>
+        <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+        <li><a href="map.html" id="nav-map" data-i18n="nav-map">Carte</a></li>
+        <li><a href="expert.html" id="nav-ai" data-i18n="nav-ai">Q&R IA</a></li>
+        <li><a href="resources.html" id="nav-resources" data-i18n="nav-resources">Ressources</a></li>
+        <li><a href="presentation.html" id="nav-about" data-i18n="nav-about">À propos</a></li>
+    </ul>
+    <div class="lang-switcher">
+        <button type="button" id="lang-fr" title="Passer en FranÃ§ais">
+            <img src="img/fr.svg" alt="FranÃ§ais">
+        </button>
+        <button type="button" id="lang-en" title="Switch to English">
+            <img src="img/au.svg" alt="English">
+        </button>
+    </div>
+</nav>
+
+    <main class="container">
+        <div data-lang="en">
+        <section class="content-section">
+            <h1>Objectives and Methodology <a href="objet.html"><img src="img/up-arrow.svg" alt="Back to Aim page"></a></h1>
+            <h3>Aims, Method, and Scope</h3>
+            <div class="om-intro">
+                <p>Like its companion site devoted to the French expeditions, <em>Flinders Place Names</em> pursues three interrelated aims: documentary, interpretive and educational.</p>
+            </div>
+            <div class="om-section-block om-clearfix">
+                <figure class="om-illustration om-illustration--left">
+                    <img src="img/flinders/carte-generale-1814.jpg" alt="General Chart of Terra Australis or Australia, 1814">
+                    <figcaption>Matthew Flinders, <em>General Chart of Terra Australis or Australia</em>, London, 1814. David Rumsey Map Collection.</figcaption>
+                </figure>
+                <h4>1. Documentary: an evidence-based record</h4>
+                <p>The site brings together, in one consolidated corpus, the coastal features named by Matthew Flinders between 1795 and 1803: some 350 names, from his first boat voyages with George Bass to the circumnavigation in the <em>Investigator</em>.</p>
+                <p>Each name is identified by a code, located by its modern coordinates, and set against its present Australian form. The research rests on Flinders&rsquo;s own writings &mdash; his published narrative, his logbooks and his charts &mdash; read alongside the official gazetteers.</p>
+            </div>
+            <div class="om-section-block om-clearfix">
+                <h4>2. Interpretive: reading names as historical documents</h4>
+                <p>Each place name is treated as a trace of the moment it was given. Entries examine:</p>
+                <ul class="om-list">
+                    <li>the circumstances of naming: date, ship, position and the state of the survey</li>
+                    <li>the person, place, event or feature it commemorates</li>
+                    <li>what Flinders himself wrote about it, quoted from the narrative or the log</li>
+                </ul>
+                <p>Naming is never neutral. Flinders named a coast that Aboriginal peoples had long since named in their own languages; where those names are known, the site records them. It also recalls the part played by intermediaries such as Bungaree.</p>
+            </div>
+            <div class="om-section-block om-clearfix">
+                <h4>3. Educational: access to the sources</h4>
+                <p>The site is meant for researchers, teachers, students and anyone curious about the coast. The interactive map links each name to its position, the ship&rsquo;s route to the day&rsquo;s journal, and the 1814 chart to the modern coastline, so that the reader can check every statement against the sources.</p>
+            </div>
+            <h3>Method</h3>
+            <div class="om-section-block om-clearfix">
+                <h4>Building the corpus</h4>
+                <p>The names were drawn from the narrative and atlas of <em>A Voyage to Terra Australis</em> and from Flinders&rsquo;s earlier <em>Observations</em> (1801), then checked against the Composite Gazetteer of Australia. Each entry is classified by campaign (<em>Tom Thumb</em>, <em>Francis</em>, <em>Norfolk</em>, <em>Investigator</em>) and by type of name.</p>
+                <h4>Reconstructing the routes</h4>
+                <p>Flinders gives his position only at intervals. The track of the <em>Investigator</em>, the <em>Porpoise</em> and the <em>Cumberland</em> was rebuilt from the noon positions of the narrative, then adjusted on the noon points engraved on his general chart. Days between two known positions are estimated by interpolation, and marked as such.</p>
+                <h4>The journals</h4>
+                <p>The narrative and the logbook are given day by day, in the original English and in a French translation produced for the site and flagged as such.</p>
+            </div>
+            <h3>Sources</h3>
+            <h4>Primary sources</h4>
+            <ul>
+                <li>Matthew Flinders, <em>A Voyage to Terra Australis</em>, London, G. &amp; W. Nicol, 1814, 2 vols and atlas &mdash; <a href="https://gutenberg.net.au/ebooks/e00049.html" target="_blank" rel="noopener noreferrer">Project Gutenberg Australia</a></li>
+                <li>Matthew Flinders, journal on HMS <em>Investigator</em>, vols 1 and 2 (1801&ndash;1803) &mdash; <a href="https://www.sl.nsw.gov.au/collection-items/matthew-flinders-journal-hms-investigator-vol-1-1801-1802" target="_blank" rel="noopener noreferrer">State Library of New South Wales</a></li>
+                <li>Matthew Flinders, <em>Observations on the Coasts of Van Diemen&rsquo;s Land, on Bass&rsquo;s Strait and its Islands</em>, London, 1801</li>
+                <li>Matthew Flinders, <em>General Chart of Terra Australis or Australia</em>, 1814 &mdash; <a href="https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~331867~90100273" target="_blank" rel="noopener noreferrer">David Rumsey Map Collection</a></li>
+            </ul>
+            <h4>Reference works and institutions</h4>
+            <ul>
+                <li>The Flinders Papers, National Maritime Museum, Greenwich &mdash; <a href="https://www.rmg.co.uk/" target="_blank" rel="noopener noreferrer">https://www.rmg.co.uk/</a></li>
+                <li>National Library of Australia (TROVE) &mdash; <a href="https://trove.nla.gov.au/" target="_blank" rel="noopener noreferrer">https://trove.nla.gov.au/</a></li>
+                <li>Composite Gazetteer of Australia (ICSM) &mdash; <a href="https://placenames.fsdf.org.au/" target="_blank" rel="noopener noreferrer">https://placenames.fsdf.org.au/</a></li>
+                <li>South Australian Maritime Museum, <em>Encounter 1802&ndash;2002</em> &mdash; <a href="https://maritime.history.sa.gov.au/" target="_blank" rel="noopener noreferrer">https://maritime.history.sa.gov.au/</a></li>
+            </ul>
+            <div style="text-align: center; padding-top: 20px;">
+                <a href="objet.html"><img src="img/up-arrow.svg" alt="Back to Aim page"></a>
+            </div>
+        </section>
+        </div>
+        <div data-lang="fr">
+        <section class="content-section">
+            <h1>Objectifs et méthodologie <a href="objet.html"><img src="img/up-arrow.svg" alt="Retour à la page Objet"></a></h1>
+            <h3>Objectifs, méthode et périmètre</h3>
+            <div class="om-intro">
+                <p>Comme le site jumeau consacré aux expéditions françaises, <em>Flinders Place Names</em> poursuit trois objectifs liés : documentaire, interprétatif et pédagogique.</p>
+            </div>
+            <div class="om-section-block om-clearfix">
+                <figure class="om-illustration om-illustration--left">
+                    <img src="img/flinders/carte-generale-1814.jpg" alt="General Chart of Terra Australis or Australia, 1814">
+                    <figcaption>Matthew Flinders, <em>General Chart of Terra Australis or Australia</em>, Londres, 1814. David Rumsey Map Collection.</figcaption>
+                </figure>
+                <h4>1. Documentaire : une référence fondée sur les sources</h4>
+                <p>Le site réunit en un corpus unique les lieux côtiers nommés par Matthew Flinders entre 1795 et 1803 : près de 350 noms, de ses premières reconnaissances en canot avec George Bass jusqu&rsquo;à la circumnavigation de l&rsquo;<em>Investigator</em>.</p>
+                <p>Chaque nom reçoit un code, est situé par ses coordonnées actuelles et rapproché de sa forme australienne d&rsquo;aujourd&rsquo;hui. La recherche s&rsquo;appuie sur les écrits de Flinders lui-même &mdash; son récit publié, ses journaux de bord et ses cartes &mdash;, confrontés aux répertoires toponymiques officiels.</p>
+            </div>
+            <div class="om-section-block om-clearfix">
+                <h4>2. Interprétatif : lire les noms comme des documents</h4>
+                <p>Chaque toponyme est traité comme la trace du moment où il fut donné. Les notices examinent :</p>
+                <ul class="om-list">
+                    <li>les circonstances de la dénomination : date, navire, position et état du levé</li>
+                    <li>la personne, le lieu, l&rsquo;événement ou le relief commémoré</li>
+                    <li>ce qu&rsquo;en écrit Flinders lui-même, cité d&rsquo;après le récit ou le journal</li>
+                </ul>
+                <p>Nommer n&rsquo;est jamais neutre. Flinders a nommé une côte que les peuples aborigènes nommaient depuis longtemps dans leurs propres langues ; lorsque ces noms sont connus, le site les mentionne. Il rappelle aussi le rôle d&rsquo;intermédiaires comme Bungaree.</p>
+            </div>
+            <div class="om-section-block om-clearfix">
+                <h4>3. Pédagogique : l&rsquo;accès aux sources</h4>
+                <p>Le site s&rsquo;adresse aux chercheurs, aux enseignants, aux étudiants et à tous les curieux du littoral. La carte interactive relie chaque nom à sa position, la route du navire au journal du jour, et la carte de 1814 au trait de côte actuel, afin que chacun puisse vérifier chaque affirmation sur pièces.</p>
+            </div>
+            <h3>Méthode</h3>
+            <div class="om-section-block om-clearfix">
+                <h4>Constitution du corpus</h4>
+                <p>Les noms ont été relevés dans le récit et l&rsquo;atlas de <em>A Voyage to Terra Australis</em> et dans les <em>Observations</em> de 1801, puis rapprochés de la Composite Gazetteer of Australia. Chaque notice est classée par campagne (<em>Tom Thumb</em>, <em>Francis</em>, <em>Norfolk</em>, <em>Investigator</em>) et par type de nom.</p>
+                <h4>Reconstitution des routes</h4>
+                <p>Flinders ne donne sa position que de loin en loin. La route de l&rsquo;<em>Investigator</em>, du <em>Porpoise</em> et de la <em>Cumberland</em> a été reconstituée à partir des positions de midi du récit, puis calée sur les points de midi gravés sur sa carte générale. Les journées comprises entre deux positions connues sont estimées par interpolation, et signalées comme telles.</p>
+                <h4>Les journaux</h4>
+                <p>Le récit et le journal de navigation sont donnés jour par jour, dans l&rsquo;original anglais et dans une traduction française réalisée pour le site et signalée comme telle.</p>
+            </div>
+            <h3>Sources</h3>
+            <h4>Sources primaires</h4>
+            <ul>
+                <li>Matthew Flinders, <em>A Voyage to Terra Australis</em>, Londres, G. &amp; W. Nicol, 1814, 2 vol. et atlas &mdash; <a href="https://gutenberg.net.au/ebooks/e00049.html" target="_blank" rel="noopener noreferrer">Project Gutenberg Australia</a></li>
+                <li>Matthew Flinders, journal du HMS <em>Investigator</em>, vol. 1 et 2 (1801-1803) &mdash; <a href="https://www.sl.nsw.gov.au/collection-items/matthew-flinders-journal-hms-investigator-vol-1-1801-1802" target="_blank" rel="noopener noreferrer">State Library of New South Wales</a></li>
+                <li>Matthew Flinders, <em>Observations on the Coasts of Van Diemen&rsquo;s Land, on Bass&rsquo;s Strait and its Islands</em>, Londres, 1801</li>
+                <li>Matthew Flinders, <em>General Chart of Terra Australis or Australia</em>, 1814 &mdash; <a href="https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~331867~90100273" target="_blank" rel="noopener noreferrer">David Rumsey Map Collection</a></li>
+            </ul>
+            <h4>Ouvrages de référence et institutions</h4>
+            <ul>
+                <li>Les Flinders Papers, National Maritime Museum, Greenwich &mdash; <a href="https://www.rmg.co.uk/" target="_blank" rel="noopener noreferrer">https://www.rmg.co.uk/</a></li>
+                <li>National Library of Australia (TROVE) &mdash; <a href="https://trove.nla.gov.au/" target="_blank" rel="noopener noreferrer">https://trove.nla.gov.au/</a></li>
+                <li>Composite Gazetteer of Australia (ICSM) &mdash; <a href="https://placenames.fsdf.org.au/" target="_blank" rel="noopener noreferrer">https://placenames.fsdf.org.au/</a></li>
+                <li>South Australian Maritime Museum, <em>Encounter 1802-2002</em> &mdash; <a href="https://maritime.history.sa.gov.au/" target="_blank" rel="noopener noreferrer">https://maritime.history.sa.gov.au/</a></li>
+            </ul>
+            <div style="text-align: center; padding-top: 20px;">
+                <a href="objet.html"><img src="img/up-arrow.svg" alt="Retour à la page Objet"></a>
+            </div>
+        </section>
+        </div>
+    </main>
+
+    <div data-include-footer></div>
+
+    <!-- Lightbox -->
+    <div class="portrait-lightbox" id="portraitLightbox">
+        <button type="button" class="portrait-lightbox-close" aria-label="Close">&times;</button>
+        <img src="" alt="">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('portraitLightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxClose = lightbox.querySelector('.portrait-lightbox-close');
+        const illustrationImages = document.querySelectorAll('.om-illustration img');
+
+        illustrationImages.forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+    </script>
+
+    <script src="js/translations.js?v=20241012"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/main.js?v=20260309"></script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="resources-meta-title">Ressources — Toponymies françaises en Australie | Flinders Place Names</title>
+    <meta name="description" content="Ressources du site Flinders Place Names : acteurs clés, cartes marines, journaux de bord, navires, glossaire, technologies et anecdotes.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flindersplacenames.au/resources.html">
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Flinders Place Names">
+    <meta property="og:title" content="Ressources — Toponymies françaises en Australie">
+    <meta property="og:description" content="Ressources du site Flinders Place Names : acteurs clés, cartes marines, journaux de bord, navires, glossaire, technologies et anecdotes.">
+    <meta property="og:url" content="https://flindersplacenames.au/resources.html">
+    <meta property="og:image" content="https://flindersplacenames.au/img/flinders/carte-generale-1814.jpg">
+    <meta property="og:locale" content="fr_AU">
+    <meta property="og:locale:alternate" content="en_AU">
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ressources — Toponymies françaises en Australie">
+    <meta name="twitter:description" content="Ressources du site Flinders Place Names : acteurs clés, cartes marines, journaux de bord, navires, glossaire, technologies et anecdotes.">
+    <meta name="twitter:image" content="https://flindersplacenames.au/img/flinders/carte-generale-1814.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon16.png">
+    <link rel="stylesheet" href="css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+        :root {
+            --nav-height: 72px;
+            --resource-section-gap: 22px;
+            --resource-grid-gap: 24px;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: #999;
+            color: #333;
+            padding-top: var(--nav-height);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+
+        .content-section { background-color: white; padding: clamp(28px, 4vw, 40px); margin-top: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-height: 50vh;}
+        .content-section h2 { font-family: 'Lato', sans-serif; font-size: 2.2rem; font-weight: 700; color: #333; border-bottom: 2px solid #0056b3; padding-bottom: 10px; margin: 0 0 18px 0;  text-align: center; }
+        .resource-primary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            background-color: #0056b3;
+            color: #fff;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .resource-primary-link:hover { background-color: #003f82; }
+        .resource-primary-link:focus-visible { outline: 3px solid #FFD700; outline-offset: 3px; }
+        .resource-item {
+            margin-top: 0;
+            padding: 14px 16px;
+            border: 1px solid #e5edf6;
+            border-radius: 12px;
+            background: #fbfdff;
+        }
+        .resource-item-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-top: 12px;
+        }
+        .resource-item-copy {
+            flex: 1;
+            min-width: 0;
+        }
+        .resource-item-art {
+            flex: 0 0 clamp(118px, 24%, 180px);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .resource-item-art a {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .resource-item-art a:focus-visible {
+            outline: 3px solid #FFD700;
+            outline-offset: 6px;
+            border-radius: 12px;
+        }
+        .resource-item-art--large {
+            flex-basis: 250px;
+            width: 250px;
+        }
+        .resource-item-art--left {
+            justify-content: flex-start;
+        }
+        .resource-item-art img {
+            display: block;
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            object-fit: contain;
+        }
+        .resource-item-art--large img { max-width: 250px; }
+
+	        /* Title (button) above, then thumbnail + description side-by-side */
+	        .resource-row { margin-top: 12px; display: flex; gap: 18px; align-items: flex-start; }
+	        .resource-thumb { width: 250px; flex: 0 0 250px; }
+            .resource-thumb.resource-thumb-lg { width: 375px; flex: 0 0 375px; }
+	        .resource-thumb a { display: block; text-decoration: none; }
+	        .resource-thumb a:focus-visible { outline: 3px solid #FFD700; outline-offset: 6px; border-radius: 12px; }
+	        .resource-thumb img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.18); display: block; }
+            .resource-thumb-media {
+                display: block;
+                position: relative;
+                overflow: hidden;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+                background: #000;
+            }
+            .resource-thumb-media img {
+                width: 100%;
+                border-radius: inherit;
+                box-shadow: none;
+            }
+            .resource-thumb-hover-video {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.25s ease;
+            }
+            .resource-thumb-media.is-video-visible .resource-thumb-hover-video {
+                opacity: 1;
+            }
+	        .resource-text { flex: 1; min-width: 0; }
+	        .resource-text p { margin: 0 0 10px 0; }
+	        .resource-text p:last-child { margin-bottom: 0; }
+        @media (min-width: 769px) {
+            .resource-item > p:not(:first-child),
+            .resource-item > div[data-i18n-html],
+            .resource-item-copy,
+            .resource-text {
+                text-align: justify;
+                text-justify: inter-word;
+                hyphens: auto;
+            }
+        }
+
+	        /* Two-column layout (like ships.html) */
+	        .resource-grid {
+	            margin-top: var(--resource-section-gap);
+	            display: grid;
+	            grid-template-columns: repeat(2, minmax(0, 1fr));
+	            gap: var(--resource-grid-gap);
+                align-items: stretch;
+	        }
+	        .resource-grid .resource-item { margin-top: 0; }
+
+            /* Intro entries are stacked to avoid large vertical white gaps */
+            .resource-grid-intro {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-top: 18px;
+            }
+
+	        /* Add a line break before descriptions (items without thumbnail) */
+	        .resource-item > p + p { margin-top: 12px; }
+
+	        @media (max-width: 768px) {
+                .container { padding: 10px; }
+                .content-section {
+                    padding: 24px 14px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+	            .resource-grid { grid-template-columns: 1fr; gap: 18px; }
+                .resource-grid-intro { gap: 14px; }
+	            .resource-row {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .resource-item {
+                    width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .resource-item-content {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+	            .resource-thumb,
+                .resource-thumb.resource-thumb-lg {
+                    width: min(320px, 100%);
+                    flex-basis: auto;
+                    margin: 0 auto;
+                }
+                .resource-item-art {
+                    width: min(170px, 52%);
+                    flex-basis: auto;
+                    align-self: center;
+                    justify-content: center;
+                }
+                .resource-item-art--large {
+                    width: min(250px, 72%);
+                }
+                .resource-item-copy,
+                .resource-text { width: 100%; }
+                .resource-item > p:not(:first-child),
+                .resource-item > div[data-i18n-html],
+                .resource-item-copy,
+                .resource-text { text-align: left; }
+	        }
+
+        /* Assistant AI block */
+        .assistant-block {
+            margin-top: 18px;
+            padding: 0;
+            border: none;
+            background: transparent;
+        }
+        .assistant-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            background-color: #0056b3;
+            color: #fff;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .assistant-button:hover { background-color: #003f82; }
+        .assistant-button:focus-visible { outline: 3px solid #FFD700; outline-offset: 3px; }
+        .assistant-description { margin: 10px 0 0 0; line-height: 1.5; }
+
+        footer { background: #1f1f1f; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+        @media  (max-width: 768px)  {.content-section { padding: 24px; }
+            .content-section h2 { font-size: 1.5rem; }
+            .content-section p { font-size: 0.9rem; }
+        }
+
+        .resource-new .resource-thumb img { height: auto; object-fit: contain; background: #f7f7f5; }
+        .resource-new .resource-row { display: block; }
+        .resource-new .resource-thumb { width: 100%; }
+        .resource-new .resource-technologies .resource-thumb img { height: auto; aspect-ratio: 5 / 4; object-fit: cover; object-position: center top; }
+        .resource-new .resource-text { margin-top: 18px; }
+        .resource-new [data-lang] { display: none; }
+        html[lang^="fr"] .resource-new [data-lang="fr"], html[lang^="en"] .resource-new [data-lang="en"] { display: block; }
+            /* Cartes bilingues (Technologies, Anecdotes) : une seule langue a la fois. */
+        [data-lang] { display: none; }
+        html[lang^="fr"] [data-lang="fr"], html[lang^="en"] [data-lang="en"] { display: block; }
+    </style>
+<!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCWV2EVPVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+gtag('config', 'G-LCWV2EVPVQ');
+    </script>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="index.html" id="nav-home" data-i18n="nav-home">Accueil</a></li>
+        <li><a href="objet.html" id="nav-objet" data-i18n="nav-objet">Objet</a></li>
+        <li><a href="map.html" id="nav-map" data-i18n="nav-map">Carte</a></li>
+        <li><a href="expert.html" id="nav-ai" data-i18n="nav-ai">Q&R IA</a></li>
+        <li><a href="resources.html" id="nav-resources" data-i18n="nav-resources">Ressources</a></li>
+        <li><a href="presentation.html" id="nav-about" data-i18n="nav-about">À propos</a></li>
+    </ul>
+    <div class="lang-switcher">
+        <button type="button" id="lang-fr" title="Passer en Français">
+            <img src="img/fr.svg" alt="Français">
+        </button>
+        <button type="button" id="lang-en" title="Switch to English">
+            <img src="img/au.svg" alt="English">
+        </button>
+    </div>
+</nav>
+
+    <main class="container">
+        <section class="content-section">
+            <h2 data-i18n="resources-title">Ressources</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <p data-i18n-html="resources-actors-entry"><a class="resource-primary-link" href="actors.html">Acteurs clés</a></p>
+                    <div class="resource-row">
+                        <div class="resource-thumb">
+                            <a href="actors.html" aria-label="Acteurs clés">
+                                <img src="img/flinders/portrait-flinders-chazal.jpg" alt="" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                        <div class="resource-text">
+                            <p data-i18n-html="resources-actors-subtitle">Les hommes des voyages de Flinders</p>
+                            <p data-i18n-html="resources-actors-description"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <p data-i18n-html="resources-charts-entry"><a class="resource-primary-link" href="maps.html">Cartes marines</a></p>
+                    <div class="resource-row">
+                        <div class="resource-thumb resource-thumb-lg">
+                            <a href="maps.html" aria-label="Cartes marines">
+                                <img src="img/flinders/carte-generale-1814.jpg" alt="" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                        <div class="resource-text">
+                            <p data-i18n-html="resources-charts-description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <p data-i18n-html="resources-journals-entry"><a class="resource-primary-link" href="journaux.html">Journaux de bord comparés</a></p>
+                    <div class="resource-row">
+                        <div class="resource-thumb">
+                            <a href="journaux.html" aria-label="Journaux de bord comparés">
+                                <img src="img/flinders/vue-malay-road.jpg" alt="" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                        <div class="resource-text">
+                            <p data-i18n-html="resources-journals-description"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <p data-i18n-html="resources-ships-entry"><a class="resource-primary-link" href="ships.html">Les navires</a></p>
+                    <div class="resource-row">
+                        <div class="resource-thumb">
+                            <a href="ships.html" aria-label="Les navires">
+                                <img src="img/flinders/navire-investigator.jpg" alt="" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                        <div class="resource-text">
+                            <p data-i18n-html="resources-ships-subtitle">Les navires de Flinders</p>
+                            <p data-i18n-html="resources-ships-description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <p data-i18n-html="resources-glossary-entry"><a class="resource-primary-link" href="glossary.html">Glossaire des termes</a></p>
+                    <div class="resource-row">
+                        <div class="resource-thumb">
+                            <a href="glossary.html" aria-label="Glossaire des termes">
+                                <img src="img/resources-glossaire.jpg" alt="" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                        <div class="resource-text">
+                            <p data-i18n-html="resources-glossary-subtitle"></p>
+                            <p data-i18n-html="resources-glossary-description"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="resource-item"><div data-lang="fr"><p><a class="resource-primary-link" href="technologies.html">Les technologies</a></p><div class="resource-row"><div class="resource-thumb"><a href="technologies.html" aria-label="Les technologies"><img src="img/flinders/chronometre-earnshaw.jpg" alt="" loading="lazy" decoding="async"></a></div><div class="resource-text"><p>Chronomètres d’Earnshaw et d’Arnold, compas, baromètre marin et barre de Flinders : les instruments qui ont permis de lever la côte australienne.</p></div></div></div><div data-lang="en"><p><a class="resource-primary-link" href="technologies.html">Technologies</a></p><div class="resource-row"><div class="resource-thumb"><a href="technologies.html" aria-label="Technologies"><img src="img/flinders/chronometre-earnshaw.jpg" alt="" loading="lazy" decoding="async"></a></div><div class="resource-text"><p>Earnshaw and Arnold timekeepers, compasses, the marine barometer and the Flinders bar: the instruments that made the survey of the Australian coast possible.</p></div></div></div></div>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-item"><div data-lang="fr"><p><a class="resource-primary-link" href="anecdotes.html">Anecdotes</a></p><div class="resource-row"><div class="resource-thumb"><a href="anecdotes.html" aria-label="Anecdotes"><img src="img/flinders/trim-mitchell.jpg" alt="" loading="lazy" decoding="async"></a></div><div class="resource-text"><p>Un chat de bord, une rencontre en pleine guerre, un naufrage et une tombe retrouvée sous une gare de Londres : quatre histoires des voyages de Flinders.</p></div></div></div><div data-lang="en"><p><a class="resource-primary-link" href="anecdotes.html">Anecdotes</a></p><div class="resource-row"><div class="resource-thumb"><a href="anecdotes.html" aria-label="Anecdotes"><img src="img/flinders/trim-mitchell.jpg" alt="" loading="lazy" decoding="async"></a></div><div class="resource-text"><p>A ship’s cat, a meeting in wartime, a shipwreck and a grave found beneath a London railway station: four stories from Flinders’s voyages.</p></div></div></div></div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include-footer></div>
+
+    <script src="js/translations.js?v=20261001-journaux2"></script>
+    <script src="js/translations-flinders.js?v=20261003"></script>
+<script>
+        window.resourcePageFlags = {
+            enableBaudinHoverVideo: false
+        };
+    </script>
+    <script src="js/main.js?v=20260905-resources"></script>
+</body>
+</html>

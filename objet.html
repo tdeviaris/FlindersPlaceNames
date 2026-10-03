@@ -142,9 +142,6 @@
         .audio-title-button:active { transform: scale(0.98); }
         .audio-title-button:focus-visible { outline: 2px solid #FFD700; outline-offset: 3px; }
         .audio-player { flex: 1; min-width: 300px; }
-        .audio-title-button:disabled { background-color: #6c8db3; cursor: default; }
-        .audio-placeholder { flex: 1; min-width: 300px; display: flex; align-items: center; gap: 14px; height: 54px; padding: 0 22px; border-radius: 999px; background: #f1f3f4; color: #9aa0a6; }
-        .audio-placeholder-bar { flex: 1; height: 4px; border-radius: 2px; background: #dadce0; }
         .audio-block + .audio-block { margin-top: 20px; }
         .audio-subtitle { margin: 0 0 0 0; line-height: 1.5; }
         .resource-item ul { margin: 8px 0 0 0; padding-left: 20px; line-height: 1.7; }
@@ -207,10 +204,13 @@ gtag('config', 'G-LCWV2EVPVQ');
             <div class="resource-item">
                 <div class="audio-block">
                     <div class="audio-header">
-                        <button type="button" class="audio-title-button" id="flinders-audio-btn" data-i18n="fl-objet-audio-title" disabled aria-disabled="true">Les voyages de Flinders</button>
-                        <div class="audio-placeholder" aria-hidden="true"><span class="audio-placeholder-icon">&#9654;</span><span class="audio-placeholder-bar"></span></div>
+                        <button type="button" class="audio-title-button" id="flinders-audio-btn" data-i18n="fl-objet-audio-title" aria-pressed="false">Les voyages de Flinders</button>
+                        <audio class="audio-player" id="flinders-audio" controls preload="none" data-i18n-src="fl-objet-audio-src">
+                            <source src="data/flinders_fr.m4a" type="audio/mp4">
+                            Votre navigateur ne supporte pas l'élément audio.
+                        </audio>
                     </div>
-                    <p class="audio-subtitle" data-i18n-html="fl-objet-audio-subtitle">Présentation audio des campagnes de Matthew Flinders, de 1795 à 1803. <em>En préparation.</em></p>
+                    <p class="audio-subtitle" data-i18n-html="fl-objet-audio-subtitle">Découvrez les voyages de Matthew Flinders (1795-1803) à travers ce dialogue présentant ses campagnes, ses découvertes et les noms qu'il a donnés.</p>
                 </div>
             </div>
 
@@ -280,7 +280,28 @@ gtag('config', 'G-LCWV2EVPVQ');
     <div data-include-footer></div>
 
     <script src="js/translations.js?v=20260919-audio"></script>
-    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/translations-flinders.js?v=20261003-audio"></script>
     <script src="js/main.js?v=20260309"></script>
+    <script>
+        // Le bouton lance ou arrete le dialogue audio.
+        (() => {
+            const bouton = document.getElementById('flinders-audio-btn');
+            const audio = document.getElementById('flinders-audio');
+            if (!bouton || !audio) return;
+            const presse = (oui) => bouton.setAttribute('aria-pressed', oui ? 'true' : 'false');
+            bouton.addEventListener('click', () => {
+                if (audio.paused) {
+                    const lecture = audio.play();
+                    if (lecture && typeof lecture.catch === 'function') lecture.catch(() => presse(false));
+                    presse(true);
+                } else {
+                    audio.pause();
+                    presse(false);
+                }
+            });
+            audio.addEventListener('play', () => presse(true));
+            audio.addEventListener('pause', () => presse(false));
+        })();
+    </script>
 </body>
 </html>

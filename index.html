@@ -346,6 +346,13 @@ gtag('config', 'G-LCWV2EVPVQ');
                     <h1 data-i18n="fl-hero-title">Flinders Place Names</h1>
                     <p data-i18n="fl-hero-subtitle">The place names given by Matthew Flinders along the Australian coast (1795–1803)</p>
                     <p id="hero-dev-status" class="intro-dev-status" data-i18n="hero-dev-status">Version under development</p>
+                    <div class="intro-audio">
+                        <p class="intro-audio-intro" data-i18n="hero-audio-intro">Audio introduction</p>
+                        <audio id="hero-audio" controls preload="none" data-i18n-src="fl-hero-audio-src" data-i18n-aria-label="hero-audio-label" aria-label="Listen to the audio introduction">
+                            <source src="data/intro_flinders_en.m4a" type="audio/mp4">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
                 </div>
                 <div class="scroll-indicator" id="scroll-indicator">
                     <span class="scroll-indicator-text" data-i18n="scroll-indicator-text">Scroll down</span>
@@ -452,7 +459,7 @@ gtag('config', 'G-LCWV2EVPVQ');
     </main>
 
     <script src="js/translations.js?v=20261003"></script>
-    <script src="js/translations-flinders.js?v=20261003"></script>
+    <script src="js/translations-flinders.js?v=20261003-intro"></script>
     <script src="js/main.js?v=20260309"></script>
     <script>
         // Gestion du changement d'image de fond lors du scroll avec fondu enchaîné

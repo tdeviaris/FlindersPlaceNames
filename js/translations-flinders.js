@@ -38,6 +38,7 @@
 
         // --- Accueil ---
         'fl-hero-title': "Les toponymes de Matthew&nbsp;Flinders",
+        'fl-hero-audio-src': "data/intro_flinders_fr.m4a",
         'fl-hero-subtitle': "Les noms donnés par Matthew Flinders le long des côtes australiennes (1795-1803)",
         'fl-intro-title': "Introduction",
         'fl-intro-subtitle': "Un navigateur et sa nomenclature",
@@ -153,6 +154,7 @@
 
         // --- Home ---
         'fl-hero-title': "Flinders Place Names",
+        'fl-hero-audio-src': "data/intro_flinders_en.m4a",
         'fl-hero-subtitle': "The place names given by Matthew Flinders along the Australian coast (1795–1803)",
         'fl-intro-title': "Introduction",
         'fl-intro-subtitle': "A navigator and his nomenclature",

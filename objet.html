@@ -95,6 +95,7 @@
         }
         .resource-item-art--large img { max-width: 255px; }
         .resource-item-content--top { align-items: flex-start; }
+        .resource-item-copy > p:first-child { margin-top: 0; }
 
         /* Two-column grid */
         .resource-grid {
@@ -216,11 +217,9 @@ gtag('config', 'G-LCWV2EVPVQ');
 
             <!-- Renvoi vers le site jumeau consacre aux expeditions francaises -->
             <div class="resource-item" style="margin-top: var(--resource-section-gap);">
+                <p data-i18n-html="fl-objet-french-entry"><a class="resource-primary-link" href="https://www.frenchplacenames.au/" target="_blank" rel="noopener">Les expéditions françaises</a></p>
                 <div class="resource-item-content resource-item-content--top">
-                    <div class="resource-item-copy">
-                        <p data-i18n-html="fl-objet-french-entry"><a class="resource-primary-link" href="https://www.frenchplacenames.au/" target="_blank" rel="noopener">Les expéditions françaises</a></p>
-                        <div data-i18n-html="fl-objet-french-description"></div>
-                    </div>
+                    <div class="resource-item-copy" data-i18n-html="fl-objet-french-description"></div>
                     <div class="resource-item-art" aria-hidden="true">
                         <picture>
                             <img src="img/carte-de-freycinet-1812.jpg" alt="" loading="lazy" decoding="async">

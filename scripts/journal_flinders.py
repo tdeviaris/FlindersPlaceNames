@@ -414,7 +414,8 @@ def position(bloc):
 
 def terre():
     """Les polygones terrestres, pour refuser une position tombee a terre."""
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    # littoral.py est commun aux deux sites (commun/scripts/).
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'commun', 'scripts'))
     from littoral import Terre
     return Terre()
 
